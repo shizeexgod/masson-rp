@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Чат</title>
+  <link rel="stylesheet" href="../ui/masson.css">
+  <style>
+    .chat { position: fixed; top: 28px; left: 32px; width: min(560px, 42vw); display: grid; gap: 10px; }
+    .chat__log {
+      margin: 0; padding: 0; list-style: none;
+      max-height: 300px; overflow: hidden;
+      display: flex; flex-direction: column; justify-content: flex-end; gap: 3px;
+      font: 600 15px/1.4 var(--m-font);
+      text-shadow: 0 1px 2px rgb(0 0 0 / 0.9), 0 0 6px rgb(0 0 0 / 0.6);
+      overflow-wrap: anywhere;
+    }
+    .chat__log li { transition: opacity 400ms var(--m-ease); }
+    .chat:not(.is-active) .chat__log li.is-old { opacity: 0; }
+    .chat.is-active .chat__log { overflow-y: auto; overscroll-behavior: contain; padding-right: 6px; }
+    .chat__form { display: flex; gap: 8px; padding: 6px; border-radius: var(--m-r-md); }
+    .chat__input {
+      flex: 1; min-width: 0; height: 40px; padding: 0 12px;
+      font: 600 15px/1 var(--m-font); color: var(--m-text);
+      background: transparent; border: 0; user-select: text;
+    }
+    .chat__input:focus-visible { outline: none; }
+    .chat__send { height: 40px; padding: 0 16px; font-size: 14px; box-shadow: none; }
+  </style>
+</head>
+<body>
+  <section class="chat" id="chat" aria-label="Чат">
+    <ol class="chat__log" id="log" aria-live="polite"></ol>
+    <form class="chat__form m-glass" id="form" hidden>
+      <input class="chat__input" id="input" name="chat" autocomplete="off" spellcheck="false"
+             maxlength="256" placeholder="Сообщение или /команда…" aria-label="Сообщение">
+      <button class="m-btn chat__send" type="submit">Отправить</button>
+    </form>
+  </section>
+  <script>
+    'use strict';
+    // Контракт чата FloV:MP: window.chatAPI.push / activate; отправка — mp.invoke('chatMessage'|'command').
+    const chat = document.getElementById('chat');
+    const log = document.getElementById('log');
+    const form = document.getElementById('form');
+    const input = document.getElementById('input');
+    const MAX = 60, FADE_MS = 15000;
+
+    // «{ff2e93}[Masson]{ffffff} текст» → цветные span; только textContent.
+    function render(text) {
+      const li = document.createElement('li');
+      let color = null;
+      for (const part of String(text).split(/(\{[0-9a-fA-F]{6}\})/)) {
+        if (/^\{[0-9a-fA-F]{6}\}$/.test(part)) { color = '#' + part.slice(1, 7); continue; }
+        if (!part) continue;
+        const span = document.createElement('span');
+        span.textContent = part;
+        if (color) span.style.color = color;
+        li.append(span);
+      }
+      return li;
+    }
+
+    window.chatAPI = {
+      push(text) {
+        const li = render(text);
+        log.append(li);
+        while (log.children.length > MAX) log.firstElementChild.remove();
+        log.scrollTop = log.scrollHeight;
+        setTimeout(() => li.classList.add('is-old'), FADE_MS);
+      },
+      activate(active, command) {
+        chat.classList.toggle('is-active', active);
+        form.hidden = !active;
+        if (active) {
+          for (const li of log.children) li.classList.remove('is-old');
+          input.value = command ? '/' : '';
+          input.focus();
+        } else {
+          for (const li of log.children) li.classList.add('is-old');
+        }
+      },
+    };
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = input.value.trim();
+      if (!text || !window.mp) return;
+      text.startsWith('/') ? mp.invoke('command', text.slice(1)) : mp.invoke('chatMessage', text);
+      input.value = '';
+    });
+  </script>
+</body>
+</html>

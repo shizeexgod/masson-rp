@@ -1,0 +1,16 @@
+node_modules/
+dist/
+out/
+*.exe
+*.blockmap
+*.zip
+*.7z
+*.log
+.claude/
+**/client-bundle/
+**/native-dist/
+**/release/
+*.key
+*.pem
+*.env
+settings/redisPassword.txt

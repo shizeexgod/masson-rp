@@ -1,0 +1,160 @@
+/* Masson RP — экраны входа, HUD, уведомления, спидометр. Токены — masson.css. */
+
+/* ---------- Вход ---------- */
+.auth {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 460px);
+  align-items: center;
+  gap: clamp(32px, 6vw, 120px);
+  padding: clamp(32px, 7vw, 140px);
+  overscroll-behavior: contain;
+}
+.auth__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(60% 70% at 18% 40%, rgb(255 46 147 / 0.22), transparent 70%),
+    radial-gradient(50% 60% at 85% 75%, rgb(139 77 255 / 0.24), transparent 70%),
+    linear-gradient(180deg, rgb(11 7 16 / 0.88), rgb(11 7 16 / 0.96));
+}
+.auth__brand { display: grid; justify-items: center; gap: 18px; text-align: center; }
+.auth__logo {
+  width: clamp(200px, 22vw, 320px);
+  height: auto;
+  border-radius: 28px;
+  filter: drop-shadow(0 0 40px rgb(255 46 147 / 0.35));
+  animation: m-float 6s var(--m-ease) infinite alternate;
+}
+.auth__tagline { margin: 0; font-size: 15px; color: var(--m-muted); text-wrap: balance; }
+
+.auth__card {
+  display: grid;
+  gap: 18px;
+  padding: 36px;
+  animation: m-rise 320ms var(--m-ease) both;
+}
+.auth__eyebrow {
+  margin: 0;
+  font: 600 11px/1 var(--m-display);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--m-pink);
+}
+.auth__title {
+  margin: -6px 0 0;
+  font: 800 28px/1.15 var(--m-display);
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+.auth__lead { margin: -6px 0 6px; font-size: 14px; line-height: 1.5; color: var(--m-muted); }
+.auth__sex { margin: 0; padding: 0; border: 0; display: grid; gap: 8px; min-width: 0; }
+.auth__sex legend { padding: 0; margin-bottom: 8px; }
+
+@media (max-width: 900px) {
+  .auth { grid-template-columns: 1fr; justify-items: center; }
+  .auth__brand { display: none; }
+  .auth__card { width: min(460px, 100%); }
+}
+
+/* ---------- HUD ---------- */
+.hud {
+  position: fixed;
+  top: 28px;
+  right: 32px;
+  display: grid;
+  justify-items: end;
+  gap: 12px;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 0.7);
+  pointer-events: none;
+}
+.hud__top { display: grid; justify-items: end; gap: 4px; }
+.hud__brand { display: flex; align-items: center; gap: 8px; font: 800 22px/1 var(--m-display); letter-spacing: 0.06em; }
+.hud__rp {
+  font: 800 11px/1 var(--m-display);
+  padding: 4px 7px;
+  color: #fff;
+  background: var(--m-grad);
+  border-radius: 6px;
+  text-shadow: none;
+}
+.hud__clock { font: 700 15px/1 var(--m-font); color: var(--m-text); }
+.hud__name { font-size: 13px; color: var(--m-muted); max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.hud__money {
+  margin: 0;
+  min-width: 220px;
+  padding: 12px 16px;
+  display: grid;
+  gap: 6px;
+  border-radius: var(--m-r-md);
+  text-shadow: none;
+}
+.hud__row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; min-width: 0; }
+.hud__row dt { font-size: 12px; font-weight: 600; color: var(--m-muted); }
+.hud__row dd { margin: 0; font: 700 18px/1 var(--m-font); }
+.hud__row:first-child dd { color: var(--m-ok); }
+.hud__row dd.is-bump { animation: m-bump 420ms var(--m-ease); }
+
+/* ---------- Уведомления ---------- */
+.toasts {
+  position: fixed;
+  top: 200px;
+  right: 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  justify-items: end;
+  pointer-events: none;
+}
+.toast {
+  max-width: 360px;
+  padding: 12px 16px 12px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  border-radius: var(--m-r-md);
+  animation: m-slide 260ms var(--m-ease) both;
+}
+.toast::after {
+  content: "";
+  position: absolute;
+  left: 0; top: 10px; bottom: 10px;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--m-grad);
+}
+.toast.is-leaving { animation: m-fade 220ms var(--m-ease) both; }
+
+/* ---------- Спидометр ---------- */
+.speedo {
+  position: fixed;
+  right: 32px;
+  bottom: 40px;
+  min-width: 176px;
+  padding: 14px 18px 16px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  column-gap: 8px;
+  row-gap: 10px;
+  border-radius: var(--m-r-md);
+  pointer-events: none;
+}
+.speedo__value { font: 800 40px/1 var(--m-display); }
+.speedo__unit { font-size: 13px; font-weight: 700; color: var(--m-muted); }
+.speedo__bar { grid-column: 1 / -1; height: 4px; border-radius: 4px; background: var(--m-surface-2); overflow: hidden; }
+.speedo__bar span { display: block; height: 100%; width: 100%; background: var(--m-grad); transform-origin: left center; transform: scaleX(0); transition: transform 120ms linear; }
+
+/* ---------- Движение ---------- */
+@keyframes m-rise { from { opacity: 0; transform: translateY(14px) scale(0.985); } to { opacity: 1; transform: none; } }
+@keyframes m-slide { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: none; } }
+@keyframes m-fade { to { opacity: 0; transform: translateX(16px); } }
+@keyframes m-bump { 40% { transform: scale(1.08); } }
+@keyframes m-float { from { transform: translateY(-6px); } to { transform: translateY(6px); } }
+@media (prefers-reduced-motion: reduce) { .auth__logo { animation: none; } }

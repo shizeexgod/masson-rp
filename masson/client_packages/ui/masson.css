@@ -1,0 +1,159 @@
+/* Masson RP — дизайн-токены и базовые компоненты интерфейса (CEF, Chromium 131).
+   Цвета — из логотипа: розовый → маджента → фиолетовый, неон на почти чёрном. */
+
+@font-face { font-family: "Manrope"; font-weight: 400; font-display: swap; src: url("fonts/manrope-cyrillic-400.woff2") format("woff2"); unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Manrope"; font-weight: 400; font-display: swap; src: url("fonts/manrope-latin-400.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122; }
+@font-face { font-family: "Manrope"; font-weight: 600; font-display: swap; src: url("fonts/manrope-cyrillic-600.woff2") format("woff2"); unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Manrope"; font-weight: 600; font-display: swap; src: url("fonts/manrope-latin-600.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122; }
+@font-face { font-family: "Manrope"; font-weight: 700; font-display: swap; src: url("fonts/manrope-cyrillic-700.woff2") format("woff2"); unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Manrope"; font-weight: 700; font-display: swap; src: url("fonts/manrope-latin-700.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122; }
+@font-face { font-family: "Unbounded"; font-weight: 600; font-display: swap; src: url("fonts/unbounded-cyrillic-600.woff2") format("woff2"); unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Unbounded"; font-weight: 600; font-display: swap; src: url("fonts/unbounded-latin-600.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122; }
+@font-face { font-family: "Unbounded"; font-weight: 800; font-display: swap; src: url("fonts/unbounded-cyrillic-800.woff2") format("woff2"); unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Unbounded"; font-weight: 800; font-display: swap; src: url("fonts/unbounded-latin-800.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122; }
+
+:root {
+  color-scheme: dark;
+
+  /* Бренд */
+  --m-pink: #ff2e93;
+  --m-magenta: #d63cf0;
+  --m-violet: #8b4dff;
+  --m-blue: #6a5cff;
+  --m-grad: linear-gradient(120deg, var(--m-pink) 0%, var(--m-magenta) 48%, var(--m-violet) 100%);
+  --m-grad-soft: linear-gradient(120deg, rgb(255 46 147 / 0.18), rgb(139 77 255 / 0.18));
+
+  /* Поверхности и текст */
+  --m-bg: #0b0710;
+  --m-surface: rgb(17 10 26 / 0.80);
+  --m-surface-2: rgb(255 255 255 / 0.05);
+  --m-line: rgb(255 255 255 / 0.09);
+  --m-text: #f8eefb;
+  --m-muted: #b8a6c8;
+  --m-faint: #7d6c8c;
+  --m-danger: #ff6b8b;
+  --m-ok: #5ee3a8;
+
+  /* Свечение, радиусы, движение */
+  --m-glow: 0 0 28px rgb(255 46 147 / 0.32), 0 0 64px rgb(139 77 255 / 0.18);
+  --m-shadow: 0 24px 64px rgb(0 0 0 / 0.55);
+  --m-r-sm: 8px;
+  --m-r-md: 14px;
+  --m-r-lg: 22px;
+  --m-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  --m-font: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --m-display: "Unbounded", "Manrope", system-ui, sans-serif;
+
+  font-family: var(--m-font);
+  color: var(--m-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: transparent; /* под страницей — игра */
+  overflow: hidden;
+  user-select: none;
+}
+
+[hidden] { display: none !important; }
+
+.m-num { font-variant-numeric: tabular-nums; }
+
+/* Градиентный текст бренда */
+.m-brand-text {
+  background: var(--m-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+  filter: drop-shadow(0 0 10px rgb(255 46 147 / 0.45));
+}
+
+/* Стеклянная панель с градиентной рамкой 1px */
+.m-glass {
+  position: relative;
+  background: var(--m-surface);
+  border-radius: var(--m-r-lg);
+  box-shadow: var(--m-shadow);
+  backdrop-filter: blur(18px) saturate(1.2);
+}
+.m-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(140deg, rgb(255 46 147 / 0.7), rgb(255 255 255 / 0.06) 40%, rgb(139 77 255 / 0.7));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Кнопки */
+.m-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 24px;
+  font: 700 15px/1 var(--m-font);
+  letter-spacing: 0.01em;
+  color: #fff;
+  background: var(--m-grad);
+  border: 0;
+  border-radius: var(--m-r-md);
+  box-shadow: var(--m-glow);
+  cursor: pointer;
+  transition: transform 140ms var(--m-ease), opacity 140ms var(--m-ease), box-shadow 140ms var(--m-ease);
+}
+.m-btn:hover { box-shadow: 0 0 36px rgb(255 46 147 / 0.5), 0 0 80px rgb(139 77 255 / 0.3); }
+.m-btn:active { transform: translateY(1px) scale(0.99); }
+.m-btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.m-btn[aria-busy="true"] { opacity: 0.7; cursor: progress; }
+.m-btn--block { width: 100%; }
+
+/* Поля ввода */
+.m-field { display: grid; gap: 8px; }
+.m-field__label { font-size: 13px; font-weight: 600; color: var(--m-muted); }
+.m-field__input {
+  height: 48px;
+  padding: 0 16px;
+  font: 600 16px/1 var(--m-font);
+  color: var(--m-text);
+  background: var(--m-surface-2);
+  border: 1px solid var(--m-line);
+  border-radius: var(--m-r-md);
+  user-select: text;
+  transition: border-color 140ms var(--m-ease), background-color 140ms var(--m-ease);
+}
+.m-field__input::placeholder { color: var(--m-faint); font-weight: 400; }
+.m-field__input:hover { border-color: rgb(255 255 255 / 0.18); }
+.m-field__input:focus-visible { outline: none; border-color: var(--m-pink); background: rgb(255 46 147 / 0.07); }
+.m-field__input[aria-invalid="true"] { border-color: var(--m-danger); }
+.m-field__hint { font-size: 12px; color: var(--m-faint); min-height: 16px; }
+.m-field__hint--error { color: var(--m-danger); }
+
+/* Переключатель (радиокнопки) */
+.m-seg { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 6px; padding: 5px; background: var(--m-surface-2); border: 1px solid var(--m-line); border-radius: var(--m-r-md); }
+.m-seg__opt { position: relative; }
+.m-seg__opt input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.m-seg__opt span {
+  display: grid; place-items: center; height: 38px;
+  font-weight: 700; font-size: 14px; color: var(--m-muted);
+  border-radius: 10px;
+  transition: color 140ms var(--m-ease), background-color 140ms var(--m-ease);
+}
+.m-seg__opt input:hover + span { color: var(--m-text); }
+.m-seg__opt input:checked + span { color: #fff; background: var(--m-grad); box-shadow: var(--m-glow); }
+.m-seg__opt input:focus-visible + span { outline: 2px solid #fff; outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 1ms !important; transition-duration: 1ms !important; }
+}

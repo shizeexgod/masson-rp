@@ -1,0 +1,8 @@
+{
+  "serverHost": "176.194.154.89",
+  "serverPort": 7788,
+  "serverName": "Masson RP",
+  "lockServer": true,
+  "updateUrl": "http://176.194.154.89:7810/launcher/",
+  "closeOnPlay": true
+}

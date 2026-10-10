@@ -1,0 +1,85 @@
+{
+  "name": "masson-launcher",
+  "productName": "Masson RP",
+  "version": "0.2.0",
+  "description": "Masson RP — лаунчер",
+  "main": "src/main.js",
+  "author": "Masson RP",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "build:native": "node build-native.mjs",
+    "dist": "npm run build:native && electron-builder --win",
+    "dist:fast": "electron-builder --win"
+  },
+  "devDependencies": {
+    "@phosphor-icons/core": "^2.1.1",
+    "electron": "^32.0.0",
+    "electron-builder": "^25.0.0",
+    "lucide-static": "^1.41.0",
+    "playwright": "^1.62.1"
+  },
+  "build": {
+    "appId": "ru.masson.launcher",
+    "productName": "Masson RP",
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "!src/renderer/**/*.map",
+      "!**/*.md"
+    ],
+    "extraResources": [
+      {
+        "from": "native-dist",
+        "to": "native",
+        "filter": [
+          "**/*",
+          "!*.pdb"
+        ]
+      },
+      {
+        "from": "client-bundle/client-b3889",
+        "to": "client-b3889",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "launcher.config.json",
+        "to": "launcher.config.json"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "shortcutName": "Masson RP",
+      "uninstallDisplayName": "Masson RP",
+      "artifactName": "MassonRP-Launcher-Setup-${version}.${ext}"
+    },
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://176.194.154.89:7810/launcher/"
+      }
+    ]
+  },
+  "dependencies": {
+    "electron-updater": "^6.3.9"
+  }
+}

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Masson RP</title>
+  <link rel="preload" href="fonts/manrope-cyrillic-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/unbounded-latin-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="masson.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+  <!-- Вход: создание персонажа / «с возвращением». Видно, пока игрок не в мире. -->
+  <main class="auth" id="auth" hidden>
+    <div class="auth__bg" aria-hidden="true"></div>
+
+    <div class="auth__brand">
+      <img class="auth__logo" src="img/logo.jpg" width="280" height="280" alt="Masson RP">
+      <p class="auth__tagline">Город, в котором у тебя своя история.</p>
+    </div>
+
+    <!-- Новый персонаж -->
+    <form class="auth__card m-glass" id="create" hidden novalidate>
+      <p class="auth__eyebrow" translate="no">Masson RP</p>
+      <h1 class="auth__title">Новый персонаж</h1>
+      <p class="auth__lead">Имя и фамилия видны другим игрокам. Сменить их потом нельзя.</p>
+
+      <label class="m-field">
+        <span class="m-field__label">Имя</span>
+        <input class="m-field__input" id="first" name="given-name" autocomplete="off" spellcheck="false"
+               maxlength="16" placeholder="Например, Ivan…" aria-describedby="first-hint">
+        <span class="m-field__hint" id="first-hint" aria-live="polite">Латиница, с заглавной буквы</span>
+      </label>
+
+      <label class="m-field">
+        <span class="m-field__label">Фамилия</span>
+        <input class="m-field__input" id="last" name="family-name" autocomplete="off" spellcheck="false"
+               maxlength="16" placeholder="Например, Petrov…" aria-describedby="last-hint">
+        <span class="m-field__hint" id="last-hint" aria-live="polite">Латиница, с заглавной буквы</span>
+      </label>
+
+      <fieldset class="auth__sex">
+        <legend class="m-field__label">Пол</legend>
+        <div class="m-seg">
+          <label class="m-seg__opt"><input type="radio" name="sex" value="m" checked><span>Мужской</span></label>
+          <label class="m-seg__opt"><input type="radio" name="sex" value="f"><span>Женский</span></label>
+        </div>
+      </fieldset>
+
+      <button class="m-btn m-btn--block" type="submit" id="create-btn">Создать персонажа</button>
+    </form>
+
+    <!-- Возвращение -->
+    <section class="auth__card m-glass" id="welcome" hidden aria-labelledby="welcome-title">
+      <p class="auth__eyebrow">С возвращением</p>
+      <h1 class="auth__title" id="welcome-title" translate="no">—</h1>
+      <p class="auth__lead">Персонаж появится там, где вы вышли из игры.</p>
+      <button class="m-btn m-btn--block" type="button" id="play-btn">Играть</button>
+    </section>
+  </main>
+
+  <!-- HUD: всегда поверх игры, мышь проходит в игру. -->
+  <section class="hud" id="hud" aria-label="Состояние персонажа" hidden>
+    <header class="hud__top">
+      <div class="hud__brand" translate="no"><span class="m-brand-text">MASSON</span><span class="hud__rp">RP</span></div>
+      <div class="hud__clock m-num" id="clock">--:--</div>
+      <div class="hud__name" id="name" translate="no"></div>
+    </header>
+
+    <dl class="hud__money m-glass">
+      <div class="hud__row">
+        <dt>Наличные</dt>
+        <dd class="m-num" id="cash">$0</dd>
+      </div>
+      <div class="hud__row">
+        <dt>Банк</dt>
+        <dd class="m-num" id="bank">$0</dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- Уведомления -->
+  <ol class="toasts" id="toasts" aria-live="polite" aria-label="Уведомления"></ol>
+
+  <!-- Спидометр -->
+  <div class="speedo m-glass" id="speedo" hidden aria-label="Скорость">
+    <span class="speedo__value m-num" id="speed">0</span>
+    <span class="speedo__unit">км/ч</span>
+    <span class="speedo__bar" aria-hidden="true"><span id="speed-bar"></span></span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
