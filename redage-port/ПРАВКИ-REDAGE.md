@@ -27,6 +27,7 @@
 | Запасной индекс пола в `clearClothes` | src_client/player/character.js | ошибка `cannot read property 1 of undefined` из `client_tc` |
 | `hasVariable` для объектов | client_packages/flov-shim.js | ошибка `playerReady: not a function` из `client_tc` |
 | Нарезка больших событий сервер → клиент (`masson.chunk`) | NeptuneEvoSDK/Trigger.cs + flov-shim.js | FloV:MP отбрасывает события длиннее 3800 символов (`doorsControl`, `client.phone.gps.init`) |
+| Нарезка и для `Main.Trigger.ClientEvent(ExtPlayer…)`, порог по размеру JSON (patch_redage8) | NeptuneEvo/Main.cs + Trigger.cs | собственный Trigger RedAge шёл мимо нарезки: `doorsControl` (404 двери) и `gps.init` отбрасывались |
 | Пароль Redis из `settings/redisPassword.txt` | Utils/Redis/Repository.cs | свой Redis с паролем, слушает только 127.0.0.1 |
 | `max_connections=500` | mariadb-data\my.ini | RedAge не может выставить сам (нужны права SUPER) |
 | `FLOVMP_ANTICHEAT=off` | config\flovmp.env | RedAge переносит игроков на клиенте; платформа возвращала их обратно |
