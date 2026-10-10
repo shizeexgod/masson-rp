@@ -31,6 +31,7 @@
 | Список ников для `render` собираем сами (patch_redage9) | src_client/player/gamertag.js | FloV:MP не передаёт `nametags`, `nametags.forEach` падало на каждом кадре (`client_tc`: `player/gamertag render`) — вероятная причина лагов/slow-mo |
 | Безопасный разбор полей внешности `massonJson` (patch_redage9) | src_client/player/character.js | `InitPlayerChar - 2: SyntaxError` — пустое поле Hair/Tattoos/… роняло весь экран персонажей |
 | Пароль Redis из `settings/redisPassword.txt` | Utils/Redis/Repository.cs | свой Redis с паролем, слушает только 127.0.0.1 |
+| `wait_timeout=2592000`, `interactive_timeout=2592000` | mariadb-data\my.ini | по умолчанию 8 ч: каждые 8 ч после старта MariaDB рвал постоянные соединения платформы (пачки `Aborted connection` в журнале Windows 23:33, 09:13, 20:16) |
 | `max_connections=500` | mariadb-data\my.ini | RedAge не может выставить сам (нужны права SUPER) |
 | `FLOVMP_ANTICHEAT=off` | config\flovmp.env | RedAge переносит игроков на клиенте; платформа возвращала их обратно |
 
