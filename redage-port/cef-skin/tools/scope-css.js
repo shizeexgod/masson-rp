@@ -31,6 +31,10 @@ for (const f of files) css += fs.readFileSync(path.join(dir, f), 'utf8') + '\n';
 
 const root = postcss.parse(css);
 root.walkRules(rule => {
+  // html/body дизайна задавали фон и высоту страницы; у корня .mp (может быть несколько слоёв друг над другом) их быть не должно
+  if (rule.selectors.some(s => /^(html|body)$/.test(s.trim()))) {
+    rule.walkDecls(d => { if (['background', 'height', 'overflow', 'margin'].includes(d.prop)) d.remove(); });
+  }
   // внутри @keyframes селекторы — проценты, не трогаем
   if (rule.parent && rule.parent.type === 'atrule' && /keyframes$/i.test(rule.parent.name)) return;
   const seen = new Set();
