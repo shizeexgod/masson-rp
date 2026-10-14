@@ -1,0 +1,144 @@
+/* Masson RP — полировка: темнее, скруглённее, градиентные акценты, анимации.
+   Подключается ПОСЛЕ остальных стилей. Все движения — через translate/scale/opacity,
+   чтобы не конфликтовать с transform в компонентах. */
+
+/* ── Анимации (ключевые кадры) ───────────────────────────── */
+@keyframes mp-rise   { from { opacity: 0; translate: 0 18px; scale: .985; filter: blur(6px); } }
+@keyframes mp-rise-s { from { opacity: 0; translate: 0 12px; } }
+@keyframes mp-pop    { from { opacity: 0; scale: .92; } }
+@keyframes mp-fadein { from { opacity: 0; } }
+@keyframes mp-float  { 0%,100% { translate: 0 0; } 50% { translate: 0 -3px; } }
+@keyframes mp-shine  { from { translate: -130% 0; } to { translate: 130% 0; } }
+@keyframes mp-glow   { 0%,100% { box-shadow: var(--accent-gloss), 0 0 14px rgba(255,102,179,.28), 0 0 26px rgba(123,134,255,.18); } 50% { box-shadow: var(--accent-gloss), 0 0 22px rgba(255,102,179,.5), 0 0 40px rgba(123,134,255,.32); } }
+@keyframes mp-ring   { from { box-shadow: 0 0 0 0 rgba(210,115,236,.55); } to { box-shadow: 0 0 0 14px rgba(210,115,236,0); } }
+@keyframes mp-grow   { from { width: 0; } }
+@keyframes mp-drift  { from { scale: 1; translate: 0 0; } to { scale: 1.07; translate: -1.2% -.8%; } }
+@keyframes mp-breathe{ 0%,100% { opacity: .75; scale: 1; } 50% { opacity: 1; scale: 1.06; } }
+@keyframes mp-sweep  { from { background-position: 200% 0; } to { background-position: -100% 0; } }
+
+/* ── Поверхности ─────────────────────────────────────────── */
+.panel {
+  border-color: rgba(255,255,255,.1);
+  background:
+    linear-gradient(90deg, transparent, rgba(255,120,195,.85), rgba(150,140,255,.85), transparent) 50% 0 / 62% 1px no-repeat,
+    radial-gradient(90% 55% at 0% 0%, rgba(196,107,240,.16), transparent 62%),
+    radial-gradient(70% 50% at 100% 100%, rgba(123,134,255,.11), transparent 65%),
+    var(--panel);
+  box-shadow: var(--shadow-panel), inset 0 1px 0 rgba(255,255,255,.07);
+  -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+}
+.win, .modal, .hud-card, .dlg { animation: mp-rise .55s var(--ease) both; }
+.win__h { background: linear-gradient(90deg, rgba(196,107,240,.10), transparent 55%); }
+.win__h > span:first-child { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; flex: none;
+  background: linear-gradient(135deg, rgba(255,102,179,.22), rgba(123,134,255,.16)); border: 1px solid rgba(255,255,255,.12); box-shadow: inset 0 1px 0 rgba(255,255,255,.12); }
+.win__h > span:first-child .ico { width: 20px; height: 20px; }
+.win__t { background: linear-gradient(90deg, #fff 40%, #f2c9ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.scrim { animation: mp-fadein .3s var(--ease) both; }
+.scr--dim .scr__vignette { background: radial-gradient(120% 100% at 50% 40%, rgba(6,3,14,.55), rgba(3,1,9,.86)); }
+.scr__bg { animation: mp-drift 40s ease-in-out infinite alternate; }
+
+/* ── Кнопки ──────────────────────────────────────────────── */
+.btn { border-radius: var(--radius-btn); border-color: rgba(255,255,255,.14);
+  background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.04)); box-shadow: inset 0 1px 0 rgba(255,255,255,.08); overflow: hidden;
+  transition: background var(--dur-fast) var(--ease), transform .25s var(--ease-spring), box-shadow var(--dur-fast) var(--ease), border-color var(--dur-fast), filter var(--dur-instant); }
+.btn:hover, .btn.is-hover { transform: translateY(-2px); border-color: rgba(255,255,255,.3); background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.06)); box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 8px 18px rgba(4,2,12,.4); }
+.btn:active { transform: translateY(0) scale(.96); }
+.btn::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0;
+  background: linear-gradient(110deg, transparent 32%, rgba(255,255,255,.4) 50%, transparent 68%); translate: -130% 0; }
+.btn:hover::before { opacity: 1; animation: mp-shine .75s var(--ease) both; }
+.btn--primary { background: var(--accent-gradient); border-color: rgba(255,255,255,.18); animation: mp-glow 3.6s ease-in-out infinite; }
+.btn--primary:hover { background: var(--accent-gradient); box-shadow: var(--accent-gloss), 0 10px 26px rgba(255,102,179,.42), 0 0 36px rgba(123,134,255,.36); animation: none; }
+.btn--primary.is-disabled, .btn--primary:disabled { animation: none; }
+.btn--lg { border-radius: 14px; } .btn--sm { border-radius: 10px; }
+.btn--ghost { background: transparent; box-shadow: none; border-color: transparent; }
+.btn--ghost:hover { background: rgba(255,255,255,.08); box-shadow: none; }
+.btn--danger { background: linear-gradient(180deg, rgba(255,101,128,.2), rgba(230,58,108,.1)); }
+.btn--icon { border-radius: 12px; }
+.btn.is-loading::before { display: none; }
+
+/* ── Поля, переключатели, вкладки ────────────────────────── */
+.input, .field .input { border-radius: var(--radius-input); transition: border-color var(--dur-fast), box-shadow var(--dur-fast), background var(--dur-fast); }
+.input:focus-within { border-color: rgba(210,115,236,.8); box-shadow: 0 0 0 4px rgba(210,115,236,.16), 0 0 18px rgba(196,107,240,.2); background: rgba(255,255,255,.08); }
+.switch__t { width: 44px; height: 26px; border-radius: 13px; transition: background var(--dur-fast), box-shadow var(--dur-fast); }
+.switch__t::after { width: 20px; height: 20px; transition: transform .35s var(--ease-spring); }
+.switch input:checked + .switch__t::after { transform: translateX(18px); }
+.check__box { border-radius: 7px; transition: all .25s var(--ease-spring); }
+.seg { border-radius: 14px; padding: 4px; background: rgba(255,255,255,.045); }
+.seg button { border-radius: 10px; transition: all .3s var(--ease); }
+.seg button.is-active { animation: mp-pop .35s var(--ease-spring) both; }
+.tab::after { transition: transform .35s var(--ease-spring); }
+.chip2 { border-radius: 10px; transition: all .25s var(--ease-spring); } .chip2:hover { translate: 0 -2px; }
+.chip2.is-active { background: var(--accent-gradient); border-color: transparent; color: #fff; box-shadow: var(--accent-gloss), var(--accent-glow); }
+
+/* ── Карточки, списки, плитки ────────────────────────────── */
+.card { border-radius: 16px; } .card--hover { transition: transform .3s var(--ease-spring), border-color var(--dur-fast), background var(--dur-fast), box-shadow var(--dur-fast); }
+.card--hover:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(4,2,12,.45), 0 0 0 1px rgba(210,115,236,.35); }
+.tile { border-radius: 14px; transition: transform .3s var(--ease-spring), background var(--dur-fast), border-color var(--dur-fast), box-shadow var(--dur-fast); }
+.tile:hover { transform: translateY(-3px) scale(1.03); }
+.tile.is-active { animation: mp-pop .35s var(--ease-spring) both; }
+.li { border-radius: 12px; transition: background var(--dur-fast), color var(--dur-fast), translate .25s var(--ease); }
+.li:hover { translate: 3px 0; }
+.li.is-active { background: linear-gradient(90deg, rgba(255,102,179,.24), rgba(123,134,255,.08)); box-shadow: inset 3px 0 0 var(--accent-solid), inset 0 0 0 1px rgba(210,115,236,.2); }
+.pcard { border-radius: 18px; transition: transform .3s var(--ease-spring), border-color var(--dur-fast), background var(--dur-fast), box-shadow var(--dur-fast); }
+.pcard:hover { transform: translateY(-4px); border-color: rgba(210,115,236,.5); box-shadow: 0 16px 34px rgba(4,2,12,.5), 0 0 24px rgba(196,107,240,.18); }
+.pcard.is-active { box-shadow: 0 0 0 1px var(--accent-solid), 0 0 28px rgba(196,107,240,.28); }
+.pcard__art { border-radius: 12px; position: relative; overflow: hidden; }
+.pcard__art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 35%, rgba(255,255,255,.16) 50%, transparent 65%); translate: -130% 0; }
+.pcard:hover .pcard__art::after { animation: mp-shine .8s var(--ease) both; }
+.pcard__art .ico { animation: mp-float 4s ease-in-out infinite; }
+.bdg { border-radius: 8px; } .bdg--accent { background-size: 200% 100%; animation: mp-sweep 6s linear infinite; }
+.keycap, .kbd { border-radius: 8px; }
+.alert { border-radius: 14px; } .empty { border-radius: 18px; }
+.kpi { border-radius: 16px; transition: transform .3s var(--ease-spring), border-color var(--dur-fast); } .kpi:hover { transform: translateY(-2px); border-color: rgba(210,115,236,.4); }
+.kpi:not([style]) .kpi__v { background: var(--accent-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.tier { border-radius: 14px; transition: transform .3s var(--ease-spring); } .tier:hover { transform: translateY(-3px); }
+.tier.is-now { animation: mp-glow 2.6s ease-in-out infinite; }
+.mapbox, .preview3d { border-radius: 18px; } .sw2 { border-radius: 10px; transition: transform .25s var(--ease-spring); } .sw2:hover { transform: scale(1.15); }
+.ava2 { border-radius: 10px; } .card-p { border-radius: 12px; }
+.mapbox i { animation: mp-ring 2s ease-out infinite; }
+.spin-wheel { animation: mp-glow 3s ease-in-out infinite; }
+.preview3d::before { content: ""; }
+
+/* ── Прогресс ────────────────────────────────────────────── */
+.prog { height: 8px; border-radius: 99px; } .prog i { position: relative; border-radius: 99px; animation: mp-grow 1s var(--ease) both; overflow: hidden; }
+.prog i::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.4) 50%, transparent 70%); animation: mp-shine 2.4s ease-in-out infinite; }
+.pbar__track { border-radius: 99px; }
+.slider input::-webkit-slider-thumb { transition: transform .2s var(--ease-spring); } .slider input::-webkit-slider-thumb:hover { transform: scale(1.25); }
+
+/* ── Каскадное появление содержимого ─────────────────────── */
+.win__b > *, .col-s > *, .grid > *, .stack > *, .pick > *, .tbody > *, tbody > tr, .cols > *, .stats-line > *, .modal__actions > *,
+.ch__col > *, .cr__scroll > *, .tabs > *, .chipset > * { animation: mp-rise-s .5s var(--ease) both; animation-delay: calc(var(--i, 0) * 45ms + 80ms); }
+:is(.win__b, .col-s, .grid, .stack, .pick, tbody, .cols, .stats-line, .ch__col, .cr__scroll, .tabs, .chipset) > :nth-child(1) { --i: 0; }
+:is(.win__b, .col-s, .grid, .stack, .pick, tbody, .cols, .stats-line, .ch__col, .cr__scroll, .tabs, .chipset) > :nth-child(2) { --i: 1; }
+:is(.win__b, .col-s, .grid, .stack, .pick, tbody, .cols, .stats-line, .ch__col, .cr__scroll, .tabs, .chipset) > :nth-child(3) { --i: 2; }
+:is(.win__b, .col-s, .grid, .stack, .pick, tbody, .cols, .stats-line, .ch__col, .cr__scroll, .tabs, .chipset) > :nth-child(4) { --i: 3; }
+:is(.win__b, .col-s, .grid, .stack, .pick, tbody, .cols, .stats-line, .ch__col, .cr__scroll, .tabs, .chipset) > :nth-child(5) { --i: 4; }
+:is(.win__b, .col-s, .grid, .stack, .pick, tbody, .cols, .stats-line, .ch__col, .cr__scroll, .tabs, .chipset) > :nth-child(6) { --i: 5; }
+:is(.win__b, .col-s, .grid, .stack, .pick, tbody, .cols, .stats-line, .ch__col, .cr__scroll, .tabs, .chipset) > :nth-child(7) { --i: 6; }
+:is(.win__b, .col-s, .grid, .stack, .pick, tbody, .cols, .stats-line, .ch__col, .cr__scroll, .tabs, .chipset) > :nth-child(8) { --i: 7; }
+:is(.win__b, .col-s, .grid, .stack, .pick, tbody, .cols, .stats-line, .ch__col, .cr__scroll, .tabs, .chipset) > :nth-child(n+9) { --i: 8; }
+.btn--primary, .pcard, .tile, .li { animation-fill-mode: both; }
+.btn--primary { animation: mp-rise-s .5s var(--ease) both, mp-glow 3.6s ease-in-out 1s infinite; animation-delay: calc(var(--i,0)*45ms + 80ms), 1s; }
+.btn--primary:hover { animation: none; }
+
+/* ── Скроллбары ──────────────────────────────────────────── */
+* { scrollbar-width: thin; scrollbar-color: rgba(210,115,236,.5) transparent; }
+::-webkit-scrollbar { width: 8px; height: 8px; } ::-webkit-scrollbar-thumb { background: linear-gradient(var(--accent-from), var(--accent-to)); border-radius: 8px; } ::-webkit-scrollbar-track { background: transparent; }
+
+/* ── Переключатель превью ────────────────────────────────── */
+.switcher { border-radius: 16px; } .switcher a { border-radius: 10px; transition: all .25s var(--ease); }
+
+/* ── Выбор персонажа / вход ──────────────────────────────── */
+.ava { border-radius: 14px; } .ch__spot { animation: mp-breathe 4s ease-in-out infinite; }
+.slot-c { transition: transform .3s var(--ease-spring), border-color var(--dur-fast), box-shadow var(--dur-fast); } .slot-c:hover { transform: translateX(4px); }
+
+/* ── HUD: мягкое появление блоков ────────────────────────── */
+.hud > * { animation: mp-rise-s .6s var(--ease) both; }
+.hud > :nth-child(2) { animation-delay: .06s; } .hud > :nth-child(3) { animation-delay: .12s; } .hud > :nth-child(4) { animation-delay: .18s; } .hud > :nth-child(n+5) { animation-delay: .24s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+.gt .win__t { text-shadow: none; filter: none; }
+.win__t { color: transparent; }
+.gt .kpi__v, .gt .win__t { text-shadow: none; }

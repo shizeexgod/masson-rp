@@ -1,0 +1,12 @@
+/* из auth.html дизайна */
+.auth__brand { position: absolute; left: 48px; top: 36px; display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 18px; }
+  .auth__hero { position: absolute; left: 110px; top: 250px; width: 960px; height: 540px; object-fit: cover; border-radius: var(--radius-panel); border: 1px solid var(--panel-border-strong); box-shadow: 0 30px 90px rgba(196,107,240,.28), 0 0 0 1px rgba(0,0,0,.4); }
+  .auth__foot { position: absolute; left: 48px; right: 48px; bottom: 32px; display: flex; justify-content: space-between; font-size: 13px; color: var(--text-muted); font-weight: var(--fw-semibold); }
+  .auth__foot b { color: var(--text); }
+  .auth__panel { position: absolute; right: 150px; top: 50%; width: 460px; transform: translateY(-50%); }
+  .auth__panel .tabs { margin: 0 24px; }
+  .auth__title { margin-bottom: 4px; }
+  .auth__links { display: flex; justify-content: space-between; align-items: center; }
+  .auth__sep { display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,.4); font-size: 12px; }
+  .auth__sep::before, .auth__sep::after { content: ""; flex: 1; height: 1px; background: var(--panel-border); }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--success); margin-right: 8px; box-shadow: 0 0 8px var(--success); }

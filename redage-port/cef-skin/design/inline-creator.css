@@ -1,0 +1,22 @@
+/* из creator.html дизайна */
+.cr__panel { position: absolute; left: 40px; top: 40px; bottom: 40px; width: 460px; display: flex; flex-direction: column; }
+  .cr__scroll { flex: 1; align-content: start; overflow: auto; padding: 20px 24px; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.2) transparent; }
+  .cr__foot { padding: 14px 24px; border-top: 1px solid var(--panel-border); display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--text-muted); font-weight: var(--fw-semibold); }
+  .grp { display: grid; gap: 14px; }
+  .grp__h { display: flex; align-items: center; justify-content: space-between; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; font-weight: var(--fw-bold); color: var(--text-muted); padding: 4px 0; border-bottom: 1px solid var(--panel-border); }
+  .grp__h em { font-style: normal; color: rgba(255,255,255,.4); letter-spacing: 0; text-transform: none; }
+  .grid { display: grid; gap: 8px; } .g2 { grid-template-columns: repeat(2, 1fr); } .g3 { grid-template-columns: repeat(3, 1fr); } .g4 { grid-template-columns: repeat(4, 1fr); } .g6 { grid-template-columns: repeat(6, 1fr); }
+  .big { min-height: 150px; gap: 12px; } .big .ico { width: 44px; height: 44px; }
+  .face { width: 52px; height: 52px; border-radius: 50%; background: radial-gradient(circle at 50% 38%, rgba(255,255,255,.38), rgba(255,255,255,.1) 70%); display: grid; place-items: center; }
+  .face .ico { width: 24px; height: 24px; }
+  .tile.is-active .face { background: rgba(255,255,255,.28); }
+  .cr__cam { position: absolute; left: 50%; bottom: 40px; transform: translateX(-50%); display: flex; align-items: center; gap: 16px; padding: 10px 16px; }
+  .cr__cam .slider { width: 180px; }
+  .cr__act { position: absolute; right: 48px; bottom: 40px; display: flex; gap: 12px; }
+  .cr__stage { position: absolute; left: 540px; right: 120px; top: 0; bottom: 0; pointer-events: none; }
+  .cr__spot { position: absolute; left: 50%; bottom: 150px; width: 560px; height: 140px; margin-left: -280px; border-radius: 50%; background: radial-gradient(closest-side, rgba(196,107,240,.5), rgba(123,134,255,.16) 55%, transparent 72%); }
+  .cr__ring { position: absolute; left: 50%; bottom: 175px; width: 340px; height: 80px; margin-left: -170px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.28); }
+  .cr__top { position: absolute; right: 48px; top: 40px; }
+  .rule { display: flex; gap: 8px; align-items: center; font-size: 12px; color: var(--text-muted); font-weight: var(--fw-semibold); }
+  .rule .ico { width: 14px; height: 14px; }
+  .rule.is-ok { color: var(--success); } .rule.is-bad { color: var(--danger); }

@@ -1,0 +1,112 @@
+/* Masson RP HUD — дизайн-токены.
+   Меняйте значения здесь: hud.css ссылается только на эти переменные. */
+:root {
+  /* ── Акцент ───────────────────────────── */
+  --accent-from: #ff66b3;                       /* нежный розовый */
+  --accent-mid: #c46bf0;                        /* орхидея: плавный мостик */
+  --accent-to: #7b86ff;                         /* сиреневый индиго, без тяжёлой синевы */
+  --accent-angle: 135deg;
+  --accent-gradient: linear-gradient(var(--accent-angle), var(--accent-from) 0%, var(--accent-mid) 50%, var(--accent-to) 100%);
+  --accent-solid: #d273ec;                      /* тонкие линии, мелкий текст */
+  --accent-gloss: inset 0 1px 0 rgba(255, 255, 255, .38), inset 0 -1px 0 rgba(30, 10, 80, .25);
+  --accent-glow: 0 0 12px rgba(255, 102, 179, .26), 0 0 24px rgba(123, 134, 255, .18);
+
+  /* ── Подложки ─────────────────────────── */
+  --glass-bg: rgba(9, 6, 19, .66);
+  --glass-bg-strong: rgba(9, 6, 19, .84);
+  --glass-blur: 12px;
+  --glass-border: rgba(255, 255, 255, .09);
+  --chip-bg: rgba(255, 255, 255, .09);
+  --track-bg: rgba(255, 255, 255, .12);
+
+  /* ── Текст ────────────────────────────── */
+  --text: #ffffff;
+  --text-muted: #d2cbe8;                        /* серо-фиолетовый для вторичного */
+  --text-dim: rgba(255, 255, 255, .24);         /* ведущие нули, неактивные иконки */
+
+  --text-shadow: 0 1px 2px rgba(5, 2, 14, .8), 0 0 14px rgba(5, 2, 14, .55);
+  --icon-shadow: drop-shadow(0 1px 1.5px rgba(5, 2, 14, .55));
+  --vignette: rgba(6, 3, 14, .52);               /* мягкое затемнение углов под текстом; transparent — выключить */
+
+  /* ── Состояния ────────────────────────── */
+  --danger-from: #ff6b82;
+  --danger-to: #e63a6c;
+  --danger-gradient: linear-gradient(var(--accent-angle), var(--danger-from), var(--danger-to));
+  --danger: #ff6580;
+  --warn-threshold: 20;                         /* ≤ этого значения (%) показываем красным */
+
+  /* ── Радиусы ──────────────────────────── */
+  --radius-sm: 7px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-map: 16px;                           /* миникарта */
+  --radius-pill: 12px;                            /* пилюли и чипы: небольшое скругление */
+
+  /* ── Типографика ──────────────────────── */
+  --font: "Manrope", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fs-xs: 12px;
+  --fs-sm: 14px;
+  --fs-md: 16px;
+  --fs-lg: 20px;
+  --fs-speed: 72px;
+  --fw-regular: 500;
+  --fw-semibold: 700;
+  --fw-bold: 800;
+
+  /* ── Сетка экрана 1920×1080 ───────────── */
+  --screen-w: 1920px;
+  --screen-h: 1080px;
+  --edge-x: 40px;
+  --edge-y: 36px;
+
+  /* ── Размеры блоков ───────────────────── */
+  --minimap-w: 272px;
+  --minimap-h: 192px;
+  --info-w: 232px;
+  --bar-h: 6px;
+  --pill-h: 32px;
+  --icon: 18px;
+  --key-size: 24px;
+  --column-w: 320px;                            /* правая колонка: лого, трекер, уведомления */
+  --hints-w: 148px;
+  --speedo-size: 264px;
+  --speedo-stroke: 8px;
+  --subtitle-w: 720px;
+  --radial-size: 380px;
+  --radial-item: 64px;
+
+  /* ── Анимации ─────────────────────────── */
+  --dur-fast: 200ms;
+  --dur-base: 300ms;
+  --ease: cubic-bezier(.22, .8, .3, 1);
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+
+  /* ── Дизайн-система экранов (вход, персонажи, меню) ─ */
+  --bg-0: #06050b; --bg-1: #0d0916; --bg-2: #130d20;
+  --panel: rgba(10, 7, 19, .9);
+  --panel-solid: #0d0917;
+  --panel-border: rgba(255, 255, 255, .09);
+  --panel-border-strong: rgba(255, 255, 255, .18);
+  --field-bg: rgba(255, 255, 255, .05);
+  --field-bg-hover: rgba(255, 255, 255, .09);
+  --radius-panel: 20px;
+  --radius-btn: 12px;
+  --radius-input: 12px;
+  --focus-ring: 0 0 0 2px var(--bg-0), 0 0 0 4px var(--accent-solid);
+
+  /* Статусы: приглушённые, не кислотные */
+  --success: #6fd6a4; --success-to: #3fae82;
+  --warn: #f2c46b;    --warn-to: #d99a3a;
+  --info: #9aaaff;
+  --success-gradient: linear-gradient(var(--accent-angle), var(--success), var(--success-to));
+  --warn-gradient: linear-gradient(var(--accent-angle), var(--warn), var(--warn-to));
+
+  /* Каналы чата */
+  --ch-general: #ece7fa; --ch-rp: #ffb3d9; --ch-ooc: #a6aed0;
+  --ch-radio: #86e0c4;   --ch-org: #cdb0ff; --ch-admin: #ff8d9d;
+
+  /* Отступы (шаг 4) */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px; --sp-6: 32px; --sp-7: 48px;
+  --dur-instant: 120ms;
+  --shadow-panel: 0 24px 64px rgba(2, 1, 8, .7), 0 0 0 1px rgba(0,0,0,.4);
+}
