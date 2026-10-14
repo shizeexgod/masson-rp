@@ -5,16 +5,14 @@
 .scr { position: absolute; inset: 0; overflow: hidden; background: var(--bg-0); }
 .scr__bg { position: absolute; inset: 0; pointer-events: none;
   background:
-    radial-gradient(900px 600px at 18% 82%, rgba(255,102,179,.20), transparent 70%),
-    radial-gradient(1000px 700px at 82% 12%, rgba(123,134,255,.22), transparent 70%),
-    radial-gradient(700px 500px at 55% 55%, rgba(196,107,240,.10), transparent 70%),
-    linear-gradient(180deg, #120d1d 0%, #0b0a10 100%); }
+    radial-gradient(900px 560px at 14% 100%, rgba(255,102,179,.10), transparent 70%),
+    linear-gradient(180deg, #0e0e11 0%, #050506 100%); }
 .scr__skyline { position: absolute; left: 0; right: 0; bottom: 0; height: 320px; pointer-events: none; opacity: .9; }
-.scr__vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(4,2,10,.55)); }
+.scr__vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(0,0,0,.55)); }
 .scr--scene .scr__bg { background:
-    linear-gradient(90deg, rgba(8,4,18,.78) 0%, rgba(8,4,18,.35) 38%, rgba(8,4,18,0) 60%),
-    radial-gradient(520px 260px at 66% 88%, rgba(196,107,240,.22), transparent 70%),
-    linear-gradient(180deg, #5a4d78 0%, #8d7f9b 34%, #5b5560 34.2%, #3f3a47 62%, #1d1a24 100%); }
+    linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.35) 38%, rgba(0,0,0,0) 60%),
+    radial-gradient(520px 260px at 66% 88%, rgba(196,107,240,.12), transparent 70%),
+    linear-gradient(180deg, #1b1b20 0%, #26262c 34%, #17171b 34.2%, #0f0f12 62%, #060608 100%); }
 
 /* Панель и разделители */
 .panel { background: var(--panel); border: 1px solid var(--panel-border); border-radius: var(--radius-panel);
@@ -173,13 +171,13 @@
 .prog--success i { background: var(--success-gradient); } .prog--warn i { background: var(--warn-gradient); } .prog--danger i { background: var(--danger-gradient); }
 .prog.is-indeterminate i { width: 40%; animation: indet 1.2s var(--ease) infinite; }
 @keyframes indet { from { transform: translateX(-100%); } to { transform: translateX(260%); } }
-.tip { display: inline-block; position: relative; padding: 8px 12px; border-radius: var(--radius-btn); background: #241a38; border: 1px solid var(--panel-border-strong); color: var(--text);
-  font-size: 12px; font-weight: var(--fw-semibold); box-shadow: 0 8px 24px rgba(4,2,12,.5); }
+.tip { display: inline-block; position: relative; padding: 8px 12px; border-radius: var(--radius-btn); background: #17171c; border: 1px solid var(--panel-border-strong); color: var(--text);
+  font-size: 12px; font-weight: var(--fw-semibold); box-shadow: 0 8px 24px rgba(0,0,0,.5); }
 .kbd { display: inline-grid; place-items: center; min-width: 24px; height: 24px; padding: 0 6px; border-radius: var(--radius-sm); background: var(--chip-bg); border: 1px solid var(--glass-border); font-size: 12px; font-weight: var(--fw-bold); }
 .spinner { width: 24px; height: 24px; border-radius: 50%; border: 2.5px solid rgba(255,255,255,.18); border-top-color: var(--accent-solid); animation: spin .8s linear infinite; }
 
 /* ── Модальные окна, таблицы, пустое состояние ──────────── */
-.scrim { position: absolute; inset: 0; background: rgba(6,3,14,.6); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); display: grid; place-items: center; z-index: 20;
+.scrim { position: absolute; inset: 0; background: rgba(2,2,4,.6); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); display: grid; place-items: center; z-index: 20;
   animation: fade var(--dur-fast) var(--ease) both; }
 .modal { width: 460px; padding: 28px; animation: pop var(--dur-base) var(--ease) both; }
 .modal__ico { width: 44px; height: 44px; border-radius: var(--radius-btn); display: grid; place-items: center; background: rgba(255,101,128,.14); color: var(--danger); margin-bottom: var(--sp-4); }
@@ -216,8 +214,8 @@
 
 /* ── Игровая сцена (экраны поверх игры) ─────────────────── */
 .scr--game { background: var(--scene); }
-.scr--game .scr__vignette { background: radial-gradient(110% 90% at 50% 45%, transparent 45%, rgba(6,3,14,.6)); }
-.scr--dim .scr__vignette { background: rgba(6,3,14,.58); }
+.scr--game .scr__vignette { background: radial-gradient(110% 90% at 50% 45%, transparent 45%, rgba(2,2,4,.6)); }
+.scr--dim .scr__vignette { background: rgba(2,2,4,.58); }
 .gt { text-shadow: var(--text-shadow); }
 .gt .ico { filter: var(--icon-shadow); }
 .keycap { display: inline-grid; place-items: center; min-width: 26px; height: 26px; padding: 0 7px; border-radius: var(--radius-sm); background: var(--accent-gradient);
@@ -230,4 +228,4 @@
 .chip2 { height: 32px; padding: 0 12px; border-radius: var(--radius-btn); background: var(--field-bg); border: 1px solid var(--panel-border); color: var(--text-muted); font: var(--fw-bold) 12px/1 var(--font); cursor: pointer; }
 .chip2:hover { color: var(--text); background: var(--field-bg-hover); } .chip2.is-active { background: var(--accent-gradient); color: #fff; border-color: transparent; box-shadow: var(--accent-gloss); }
 textarea.input { height: 120px; padding: 12px 14px; resize: none; font: var(--fw-semibold) var(--fs-sm)/1.5 var(--font); color: var(--text); outline: none; display: block; width: 100%; }
-.gt .grad-text { text-shadow: none; filter: drop-shadow(0 1px 2px rgba(5,2,14,.85)); }
+.gt .grad-text { text-shadow: none; filter: drop-shadow(0 1px 2px rgba(0,0,0,.85)); }

@@ -7,6 +7,7 @@
     import Icon from '../Icon.svelte'
     import Chat from './MassonChat.svelte'
     import Quest from './MassonQuest.svelte'
+    import Extra from './MassonHudExtra.svelte'
     import { charMoney, charBankMoney, charLVL, charEXP, charWanted, charFractionID, charOrganizationID, charIsPet } from 'store/chars'
     import { serverDateTime } from 'store/server'
     import { accountVip } from 'store/account'
@@ -164,6 +165,7 @@
     <div class="hud" class:hud--hidden={!visible} style="--edge-x:{edgeX}px;--edge-y:{edgeY}px">
         <!-- Чат: слева сверху -->
         <Chat />
+        <Extra />
 
         <!-- Левый нижний угол: место под миникарту игры, деньги, место и время -->
         <section class="vitals" aria-label="Состояние персонажа">

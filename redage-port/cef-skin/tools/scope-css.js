@@ -13,7 +13,7 @@ const postcss = require(path.join(nm, 'postcss'));
 const ROOT = '.mp';
 const dir = path.join(__dirname, '..', 'design');
 const out = path.join(__dirname, '..', 'overlay', 'src', 'masson', 'masson.css');
-const files = ['tokens.css', 'hud.css', 'ui.css', 'screens.css', 'polish.css',
+const files = ['tokens.css', 'hud.css', 'ui.css', 'screens.css', 'screens2.css', 'hud-extra.css', 'polish.css',
     ...fs.readdirSync(dir).filter(f => /^inline-.*\.css$/.test(f)).sort(), 'game.css'];
 
 function scopeSelector(sel) {

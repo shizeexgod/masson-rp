@@ -30,13 +30,13 @@ body { font-family: var(--font); color: var(--text); -webkit-font-smoothing: ant
   --scene:
     linear-gradient(180deg, rgba(0,0,0,0) 62%, rgba(0,0,0,.28) 100%),
     radial-gradient(60% 40% at 50% 58%, rgba(255,214,170,.20), transparent 70%),
-    linear-gradient(180deg, #7f9fc4 0%, #b9c4cf 38%, #8d8a86 38.2%, #6d6a68 62%, #4a4947 100%);
+    linear-gradient(180deg, #8c9197 0%, #b4b7ba 38%, #8d8a86 38.2%, #6d6a68 62%, #4a4947 100%);
 }
 .scene--road {
   --scene:
     linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,.30) 100%),
     radial-gradient(50% 30% at 50% 60%, rgba(255,224,180,.18), transparent 70%),
-    linear-gradient(180deg, #86a6c8 0%, #c2cbd2 34%, #77756f 34.2%, #5d5b58 60%, #3f3e3c 100%);
+    linear-gradient(180deg, #90959b 0%, #bcbfc2 34%, #77756f 34.2%, #5d5b58 60%, #3f3e3c 100%);
 }
 
 .hud { position: absolute; inset: 0; pointer-events: none; font-variant-numeric: tabular-nums; text-shadow: var(--text-shadow); }
@@ -197,7 +197,7 @@ body { font-family: var(--font); color: var(--text); -webkit-font-smoothing: ant
 /* ── 5. Субтитры ──────────────────────────────────────────────── */
 .subtitle { position: absolute; left: 50%; bottom: 64px; transform: translateX(-50%);
   width: var(--subtitle-w); text-align: center; }
-.subtitle__name { font-weight: var(--fw-bold); font-size: var(--fs-md); margin-bottom: 4px; text-shadow: none; filter: drop-shadow(0 1px 2px rgba(5,2,14,.8));
+.subtitle__name { font-weight: var(--fw-bold); font-size: var(--fs-md); margin-bottom: 4px; text-shadow: none; filter: drop-shadow(0 1px 2px rgba(0,0,0,.8));
   background: var(--accent-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .subtitle__text { font-size: var(--fs-lg); font-weight: var(--fw-semibold); line-height: 1.35; }
 .subtitle__progress { height: 3px; margin-top: 12px; border-radius: 2px; background: var(--track-bg); overflow: hidden; }
@@ -344,7 +344,7 @@ body { font-family: var(--font); color: var(--text); -webkit-font-smoothing: ant
 .tag__badge .ico { width: 14px; height: 14px; stroke: var(--accent-solid); }
 .tag__badge--admin .ico { stroke: var(--ch-admin); }
 .tag__mic .ico { width: 14px; height: 14px; stroke: url(#masson-grad); animation: talk 1.2s ease-in-out infinite; }
-.tag.is-talking .tag__name { background: var(--accent-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 1px 2px rgba(5,2,14,.8)); text-shadow: none; }
+.tag.is-talking .tag__name { background: var(--accent-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 1px 2px rgba(0,0,0,.8)); text-shadow: none; }
 
 /* Транспорт: обороты, ремень, ограничитель */
 .speedo__rpm-track, .speedo__rpm { fill: none; stroke-width: 3; stroke-linecap: round; }

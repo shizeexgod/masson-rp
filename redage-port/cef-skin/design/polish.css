@@ -34,14 +34,14 @@
 .win__h > span:first-child .ico { width: 20px; height: 20px; }
 .win__t { background: linear-gradient(90deg, #fff 40%, #f2c9ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .scrim { animation: mp-fadein .3s var(--ease) both; }
-.scr--dim .scr__vignette { background: radial-gradient(120% 100% at 50% 40%, rgba(6,3,14,.55), rgba(3,1,9,.86)); }
+.scr--dim .scr__vignette { background: radial-gradient(120% 100% at 50% 40%, rgba(2,2,4,.55), rgba(0,0,0,.86)); }
 .scr__bg { animation: mp-drift 40s ease-in-out infinite alternate; }
 
 /* ── Кнопки ──────────────────────────────────────────────── */
 .btn { border-radius: var(--radius-btn); border-color: rgba(255,255,255,.14);
   background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.04)); box-shadow: inset 0 1px 0 rgba(255,255,255,.08); overflow: hidden;
   transition: background var(--dur-fast) var(--ease), transform .25s var(--ease-spring), box-shadow var(--dur-fast) var(--ease), border-color var(--dur-fast), filter var(--dur-instant); }
-.btn:hover, .btn.is-hover { transform: translateY(-2px); border-color: rgba(255,255,255,.3); background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.06)); box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 8px 18px rgba(4,2,12,.4); }
+.btn:hover, .btn.is-hover { transform: translateY(-2px); border-color: rgba(255,255,255,.3); background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.06)); box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 8px 18px rgba(0,0,0,.4); }
 .btn:active { transform: translateY(0) scale(.96); }
 .btn::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0;
   background: linear-gradient(110deg, transparent 32%, rgba(255,255,255,.4) 50%, transparent 68%); translate: -130% 0; }
@@ -72,7 +72,7 @@
 
 /* ── Карточки, списки, плитки ────────────────────────────── */
 .card { border-radius: 16px; } .card--hover { transition: transform .3s var(--ease-spring), border-color var(--dur-fast), background var(--dur-fast), box-shadow var(--dur-fast); }
-.card--hover:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(4,2,12,.45), 0 0 0 1px rgba(210,115,236,.35); }
+.card--hover:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0,0,0,.45), 0 0 0 1px rgba(210,115,236,.35); }
 .tile { border-radius: 14px; transition: transform .3s var(--ease-spring), background var(--dur-fast), border-color var(--dur-fast), box-shadow var(--dur-fast); }
 .tile:hover { transform: translateY(-3px) scale(1.03); }
 .tile.is-active { animation: mp-pop .35s var(--ease-spring) both; }
@@ -80,7 +80,7 @@
 .li:hover { translate: 3px 0; }
 .li.is-active { background: linear-gradient(90deg, rgba(255,102,179,.24), rgba(123,134,255,.08)); box-shadow: inset 3px 0 0 var(--accent-solid), inset 0 0 0 1px rgba(210,115,236,.2); }
 .pcard { border-radius: 18px; transition: transform .3s var(--ease-spring), border-color var(--dur-fast), background var(--dur-fast), box-shadow var(--dur-fast); }
-.pcard:hover { transform: translateY(-4px); border-color: rgba(210,115,236,.5); box-shadow: 0 16px 34px rgba(4,2,12,.5), 0 0 24px rgba(196,107,240,.18); }
+.pcard:hover { transform: translateY(-4px); border-color: rgba(210,115,236,.5); box-shadow: 0 16px 34px rgba(0,0,0,.5), 0 0 24px rgba(196,107,240,.18); }
 .pcard.is-active { box-shadow: 0 0 0 1px var(--accent-solid), 0 0 28px rgba(196,107,240,.28); }
 .pcard__art { border-radius: 12px; position: relative; overflow: hidden; }
 .pcard__art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 35%, rgba(255,255,255,.16) 50%, transparent 65%); translate: -130% 0; }
@@ -142,3 +142,30 @@
 .gt .win__t { text-shadow: none; filter: none; }
 .win__t { color: transparent; }
 .gt .kpi__v, .gt .win__t { text-shadow: none; }
+
+/* ═══ v3 · сдержанный градиент ═══════════════════════════════════
+   Градиент — только на главном: основная кнопка, выбранный пункт, прогресс,
+   ключевая иконка-штрих, один фокусный элемент на экране. Остальное — графит. */
+.panel { background: var(--panel); box-shadow: var(--shadow-panel), inset 0 1px 0 rgba(255,255,255,.06); border-color: rgba(255,255,255,.09); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); }
+.win__h { background: none; }
+.win__h > span:first-child { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.1); box-shadow: none; }
+.win__t { background: none; color: #fff; -webkit-text-fill-color: #fff; }
+.kpi:not([style]) .kpi__v { background: none; color: #fff; -webkit-text-fill-color: #fff; }
+.bdg--accent { animation: none; background-size: 100% 100%; }
+.btn--primary, .btn--primary.is-disabled { animation: none; box-shadow: var(--accent-gloss), 0 4px 16px rgba(255,102,179,.22); }
+.btn--primary { animation: mp-rise-s .5s var(--ease) both; animation-delay: calc(var(--i,0)*45ms + 80ms); }
+.li.is-active { background: rgba(255,255,255,.07); box-shadow: inset 3px 0 0 var(--accent-solid); }
+.pcard__art { background: rgba(255,255,255,.04); }
+.tier.is-now { animation: none; background: rgba(255,255,255,.06); box-shadow: 0 0 0 1px var(--accent-solid); }
+.tier.is-done { border-color: rgba(255,255,255,.2); }
+.spin-wheel { animation: none; box-shadow: 0 0 28px rgba(196,107,240,.25); }
+.scr--dim .scr__vignette { background: radial-gradient(120% 100% at 50% 40%, rgba(0,0,0,.55), rgba(0,0,0,.88)); }
+.card.is-selected, .pcard.is-active { background: rgba(255,255,255,.05); }
+.hx__ico { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); box-shadow: none; }
+.hx__ico .ico { stroke: url(#masson-grad); }
+.hx__chip--acc { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.14); box-shadow: none; }
+.hx-winner__n, .hx-taxi__p { background: none; color: #fff; -webkit-text-fill-color: #fff; filter: none; }
+.hx-level__lvl { box-shadow: var(--accent-gloss), 0 0 20px rgba(255,102,179,.3); }
+.nt__name--grad { background: none; color: #fff; -webkit-text-fill-color: #fff; }
+.stage.has-scene.scene--street, .stage.has-scene.scene--road { }
+.stage.has-scene:has(.scr--dim) { background: linear-gradient(180deg, #17171b 0%, #0a0a0c 45%, #050506 100%); }

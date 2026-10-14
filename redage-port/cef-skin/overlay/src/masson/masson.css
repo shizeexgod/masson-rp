@@ -12,8 +12,8 @@
   --accent-glow: 0 0 12px rgba(255, 102, 179, .26), 0 0 24px rgba(123, 134, 255, .18);
 
   /* ── Подложки ─────────────────────────── */
-  --glass-bg: rgba(9, 6, 19, .66);
-  --glass-bg-strong: rgba(9, 6, 19, .84);
+  --glass-bg: rgba(8, 8, 11, .7);
+  --glass-bg-strong: rgba(8, 8, 11, .88);
   --glass-blur: 12px;
   --glass-border: rgba(255, 255, 255, .09);
   --chip-bg: rgba(255, 255, 255, .09);
@@ -24,9 +24,9 @@
   --text-muted: #d2cbe8;                        /* серо-фиолетовый для вторичного */
   --text-dim: rgba(255, 255, 255, .24);         /* ведущие нули, неактивные иконки */
 
-  --text-shadow: 0 1px 2px rgba(5, 2, 14, .8), 0 0 14px rgba(5, 2, 14, .55);
+  --text-shadow: 0 1px 2px rgba(0, 0, 0, .8), 0 0 14px rgba(0, 0, 0, .55);
   --icon-shadow: drop-shadow(0 1px 1.5px rgba(5, 2, 14, .55));
-  --vignette: rgba(6, 3, 14, .52);               /* мягкое затемнение углов под текстом; transparent — выключить */
+  --vignette: rgba(0, 0, 0, .55);               /* мягкое затемнение углов под текстом; transparent — выключить */
 
   /* ── Состояния ────────────────────────── */
   --danger-from: #ff6b82;
@@ -82,9 +82,9 @@
   --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
 
   /* ── Дизайн-система экранов (вход, персонажи, меню) ─ */
-  --bg-0: #06050b; --bg-1: #0d0916; --bg-2: #130d20;
-  --panel: rgba(10, 7, 19, .9);
-  --panel-solid: #0d0917;
+  --bg-0: #050506; --bg-1: #0b0b0e; --bg-2: #111115;
+  --panel: rgba(9, 9, 12, .94);
+  --panel-solid: #0b0b0e;
   --panel-border: rgba(255, 255, 255, .09);
   --panel-border-strong: rgba(255, 255, 255, .18);
   --field-bg: rgba(255, 255, 255, .05);
@@ -108,7 +108,7 @@
   /* Отступы (шаг 4) */
   --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px; --sp-6: 32px; --sp-7: 48px;
   --dur-instant: 120ms;
-  --shadow-panel: 0 24px 64px rgba(2, 1, 8, .7), 0 0 0 1px rgba(0,0,0,.4);
+  --shadow-panel: 0 24px 64px rgba(0, 0, 0, .75), 0 0 0 1px rgba(0,0,0,.5);
 }
 
 /* Masson RP HUD — компоненты. Значения берутся из tokens.css */
@@ -143,13 +143,13 @@
   --scene:
     linear-gradient(180deg, rgba(0,0,0,0) 62%, rgba(0,0,0,.28) 100%),
     radial-gradient(60% 40% at 50% 58%, rgba(255,214,170,.20), transparent 70%),
-    linear-gradient(180deg, #7f9fc4 0%, #b9c4cf 38%, #8d8a86 38.2%, #6d6a68 62%, #4a4947 100%);
+    linear-gradient(180deg, #8c9197 0%, #b4b7ba 38%, #8d8a86 38.2%, #6d6a68 62%, #4a4947 100%);
 }
 .mp .scene--road {
   --scene:
     linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,.30) 100%),
     radial-gradient(50% 30% at 50% 60%, rgba(255,224,180,.18), transparent 70%),
-    linear-gradient(180deg, #86a6c8 0%, #c2cbd2 34%, #77756f 34.2%, #5d5b58 60%, #3f3e3c 100%);
+    linear-gradient(180deg, #90959b 0%, #bcbfc2 34%, #77756f 34.2%, #5d5b58 60%, #3f3e3c 100%);
 }
 
 .mp .hud { position: absolute; inset: 0; pointer-events: none; font-variant-numeric: tabular-nums; text-shadow: var(--text-shadow); }
@@ -310,7 +310,7 @@
 /* ── 5. Субтитры ──────────────────────────────────────────────── */
 .mp .subtitle { position: absolute; left: 50%; bottom: 64px; transform: translateX(-50%);
   width: var(--subtitle-w); text-align: center; }
-.mp .subtitle__name { font-weight: var(--fw-bold); font-size: var(--fs-md); margin-bottom: 4px; text-shadow: none; filter: drop-shadow(0 1px 2px rgba(5,2,14,.8));
+.mp .subtitle__name { font-weight: var(--fw-bold); font-size: var(--fs-md); margin-bottom: 4px; text-shadow: none; filter: drop-shadow(0 1px 2px rgba(0,0,0,.8));
   background: var(--accent-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .mp .subtitle__text { font-size: var(--fs-lg); font-weight: var(--fw-semibold); line-height: 1.35; }
 .mp .subtitle__progress { height: 3px; margin-top: 12px; border-radius: 2px; background: var(--track-bg); overflow: hidden; }
@@ -457,7 +457,7 @@
 .mp .tag__badge .ico { width: 14px; height: 14px; stroke: var(--accent-solid); }
 .mp .tag__badge--admin .ico { stroke: var(--ch-admin); }
 .mp .tag__mic .ico { width: 14px; height: 14px; stroke: url(#masson-grad); animation: talk 1.2s ease-in-out infinite; }
-.mp .tag.is-talking .tag__name { background: var(--accent-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 1px 2px rgba(5,2,14,.8)); text-shadow: none; }
+.mp .tag.is-talking .tag__name { background: var(--accent-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 1px 2px rgba(0,0,0,.8)); text-shadow: none; }
 
 /* Транспорт: обороты, ремень, ограничитель */
 .mp .speedo__rpm-track, .mp .speedo__rpm { fill: none; stroke-width: 3; stroke-linecap: round; }
@@ -492,16 +492,14 @@
 .mp .scr { position: absolute; inset: 0; overflow: hidden; background: var(--bg-0); }
 .mp .scr__bg { position: absolute; inset: 0; pointer-events: none;
   background:
-    radial-gradient(900px 600px at 18% 82%, rgba(255,102,179,.20), transparent 70%),
-    radial-gradient(1000px 700px at 82% 12%, rgba(123,134,255,.22), transparent 70%),
-    radial-gradient(700px 500px at 55% 55%, rgba(196,107,240,.10), transparent 70%),
-    linear-gradient(180deg, #120d1d 0%, #0b0a10 100%); }
+    radial-gradient(900px 560px at 14% 100%, rgba(255,102,179,.10), transparent 70%),
+    linear-gradient(180deg, #0e0e11 0%, #050506 100%); }
 .mp .scr__skyline { position: absolute; left: 0; right: 0; bottom: 0; height: 320px; pointer-events: none; opacity: .9; }
-.mp .scr__vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(4,2,10,.55)); }
+.mp .scr__vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(0,0,0,.55)); }
 .mp .scr--scene .scr__bg { background:
-    linear-gradient(90deg, rgba(8,4,18,.78) 0%, rgba(8,4,18,.35) 38%, rgba(8,4,18,0) 60%),
-    radial-gradient(520px 260px at 66% 88%, rgba(196,107,240,.22), transparent 70%),
-    linear-gradient(180deg, #5a4d78 0%, #8d7f9b 34%, #5b5560 34.2%, #3f3a47 62%, #1d1a24 100%); }
+    linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.35) 38%, rgba(0,0,0,0) 60%),
+    radial-gradient(520px 260px at 66% 88%, rgba(196,107,240,.12), transparent 70%),
+    linear-gradient(180deg, #1b1b20 0%, #26262c 34%, #17171b 34.2%, #0f0f12 62%, #060608 100%); }
 
 /* Панель и разделители */
 .mp .panel { background: var(--panel); border: 1px solid var(--panel-border); border-radius: var(--radius-panel);
@@ -660,13 +658,13 @@
 .mp .prog--success i { background: var(--success-gradient); } .mp .prog--warn i { background: var(--warn-gradient); } .mp .prog--danger i { background: var(--danger-gradient); }
 .mp .prog.is-indeterminate i { width: 40%; animation: indet 1.2s var(--ease) infinite; }
 @keyframes indet { from { transform: translateX(-100%); } to { transform: translateX(260%); } }
-.mp .tip { display: inline-block; position: relative; padding: 8px 12px; border-radius: var(--radius-btn); background: #241a38; border: 1px solid var(--panel-border-strong); color: var(--text);
-  font-size: 12px; font-weight: var(--fw-semibold); box-shadow: 0 8px 24px rgba(4,2,12,.5); }
+.mp .tip { display: inline-block; position: relative; padding: 8px 12px; border-radius: var(--radius-btn); background: #17171c; border: 1px solid var(--panel-border-strong); color: var(--text);
+  font-size: 12px; font-weight: var(--fw-semibold); box-shadow: 0 8px 24px rgba(0,0,0,.5); }
 .mp .kbd { display: inline-grid; place-items: center; min-width: 24px; height: 24px; padding: 0 6px; border-radius: var(--radius-sm); background: var(--chip-bg); border: 1px solid var(--glass-border); font-size: 12px; font-weight: var(--fw-bold); }
 .mp .spinner { width: 24px; height: 24px; border-radius: 50%; border: 2.5px solid rgba(255,255,255,.18); border-top-color: var(--accent-solid); animation: spin .8s linear infinite; }
 
 /* ── Модальные окна, таблицы, пустое состояние ──────────── */
-.mp .scrim { position: absolute; inset: 0; background: rgba(6,3,14,.6); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); display: grid; place-items: center; z-index: 20;
+.mp .scrim { position: absolute; inset: 0; background: rgba(2,2,4,.6); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); display: grid; place-items: center; z-index: 20;
   animation: fade var(--dur-fast) var(--ease) both; }
 .mp .modal { width: 460px; padding: 28px; animation: pop var(--dur-base) var(--ease) both; }
 .mp .modal__ico { width: 44px; height: 44px; border-radius: var(--radius-btn); display: grid; place-items: center; background: rgba(255,101,128,.14); color: var(--danger); margin-bottom: var(--sp-4); }
@@ -703,8 +701,8 @@
 
 /* ── Игровая сцена (экраны поверх игры) ─────────────────── */
 .mp .scr--game { background: var(--scene); }
-.mp .scr--game .scr__vignette { background: radial-gradient(110% 90% at 50% 45%, transparent 45%, rgba(6,3,14,.6)); }
-.mp .scr--dim .scr__vignette { background: rgba(6,3,14,.58); }
+.mp .scr--game .scr__vignette { background: radial-gradient(110% 90% at 50% 45%, transparent 45%, rgba(2,2,4,.6)); }
+.mp .scr--dim .scr__vignette { background: rgba(2,2,4,.58); }
 .mp .gt { text-shadow: var(--text-shadow); }
 .mp .gt .ico { filter: var(--icon-shadow); }
 .mp .keycap { display: inline-grid; place-items: center; min-width: 26px; height: 26px; padding: 0 7px; border-radius: var(--radius-sm); background: var(--accent-gradient);
@@ -717,7 +715,7 @@
 .mp .chip2 { height: 32px; padding: 0 12px; border-radius: var(--radius-btn); background: var(--field-bg); border: 1px solid var(--panel-border); color: var(--text-muted); font: var(--fw-bold) 12px/1 var(--font); cursor: pointer; }
 .mp .chip2:hover { color: var(--text); background: var(--field-bg-hover); } .mp .chip2.is-active { background: var(--accent-gradient); color: #fff; border-color: transparent; box-shadow: var(--accent-gloss); }
 .mp textarea.input { height: 120px; padding: 12px 14px; resize: none; font: var(--fw-semibold) var(--fs-sm)/1.5 var(--font); color: var(--text); outline: none; display: block; width: 100%; }
-.mp .gt .grad-text { text-shadow: none; filter: drop-shadow(0 1px 2px rgba(5,2,14,.85)); }
+.mp .gt .grad-text { text-shadow: none; filter: drop-shadow(0 1px 2px rgba(0,0,0,.85)); }
 
 /* Общие стили экранов блоков 6–10 */
 .mp .win { position: absolute; left: 50%; top: 50%; width: 1280px; height: 760px; margin-left: -640px; margin-top: -380px; display: grid; grid-template-rows: auto 1fr; overflow: hidden; }
@@ -770,6 +768,102 @@
 .mp .card-p--back { background: var(--accent-gradient); color: #fff; }
 .mp .cols--top { align-content: start; }
 
+/* Вторая очередь экранов (блоки C–G) */
+.mp .srow { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.06); font-size: 14px; font-weight: 600; color: var(--text-muted); }
+.mp .srow > span:first-child { color: var(--text); } .mp .srow .slider { width: 220px; } .mp .srow small { display: block; color: var(--text-muted); font-weight: 600; font-size: 12px; margin-top: 2px; }
+.mp .slot2 { aspect-ratio: 1; border-radius: 12px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); display: grid; place-items: center; position: relative; transition: all .25s var(--ease-spring); }
+.mp .slot2 .ico { width: 26px; height: 26px; stroke: url(#masson-grad); } .mp .slot2 em { position: absolute; right: 6px; bottom: 4px; font-style: normal; font-size: 11px; font-weight: 800; color: var(--text-muted); }
+.mp .slot2.is-on:hover, .mp .slot2.is-sel { border-color: var(--accent-solid); background: rgba(255,255,255,.07); transform: translateY(-2px); } .mp .slot2.is-sel { box-shadow: 0 0 0 1px var(--accent-solid); }
+.mp .vnav { display: grid; gap: 4px; align-content: start; }
+.mp .avatar-l { width: 96px; height: 96px; border-radius: 28px; display: grid; place-items: center; font-weight: 800; font-size: 32px; background: var(--accent-gradient); box-shadow: var(--accent-gloss), var(--accent-glow); }
+.mp .keyrow { display: flex; justify-content: space-between; align-items: center; padding: 9px 12px; border-radius: 12px; background: rgba(255,255,255,.04); font-size: 14px; font-weight: 700; } .mp .keyrow .keycap { margin-left: 6px; }
+.mp .art { padding: 14px 16px; border-radius: 16px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); display: grid; gap: 4px; } .mp .art b { font-size: 15px; } .mp .art p { margin: 0; font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+.mp .msg-me, .mp .msg-ad { padding: 10px 14px; border-radius: 14px; font-size: 13px; line-height: 1.45; max-width: 80%; } .mp .msg-ad { background: rgba(255,255,255,.07); justify-self: start; } .mp .msg-me { background: var(--accent-gradient); justify-self: end; }
+.mp .anim-wheel { width: 380px; height: 380px; border-radius: 50%; position: relative; border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.03); justify-self: center; }
+.mp .anim-wheel .c { position: absolute; width: 76px; height: 76px; margin: -38px; border-radius: 22px; display: grid; place-items: center; gap: 2px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); font-size: 11px; font-weight: 700; text-align: center; padding-top: 6px; transition: all .25s var(--ease-spring); } .mp .anim-wheel .c:hover, .mp .anim-wheel .c.is-on { background: var(--accent-gradient); border-color: transparent; transform: scale(1.1); }
+.mp .anim-wheel .c .ico { width: 22px; height: 22px; stroke: #fff; }
+.mp .pad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; } .mp .pad .btn { height: 56px; font-size: 20px; }
+.mp .stat-bar { display: grid; grid-template-columns: 140px 1fr 70px; gap: 12px; align-items: center; font-size: 13px; font-weight: 600; color: var(--text-muted); } .mp .stat-bar b { color: #fff; text-align: right; }
+.mp .board { display: grid; grid-template-columns: repeat(var(--c, 8), 1fr); gap: 6px; } .mp .cell { aspect-ratio: 1; border-radius: 10px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08); display: grid; place-items: center; font-weight: 800; font-size: 15px; }
+.mp .cell.is-open { background: rgba(255,255,255,.02); color: var(--text-muted); } .mp .cell.is-flag { color: #fff; border-color: var(--accent-solid); } .mp .cell .ico { width: 18px; height: 18px; stroke: url(#masson-grad); }
+.mp .reel { display: flex; gap: 10px; overflow: hidden; padding: 14px 0; position: relative; } .mp .reel::before, .mp .reel::after { content: ""; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; } .mp .reel::before { left: 0; background: linear-gradient(90deg, #09090c, transparent); } .mp .reel::after { right: 0; background: linear-gradient(-90deg, #09090c, transparent); }
+.mp .reel .it { flex: none; width: 150px; height: 170px; border-radius: 16px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); display: grid; place-items: center; align-content: center; gap: 8px; font-size: 13px; font-weight: 700; }
+.mp .reel .it.is-win { border-color: var(--accent-solid); box-shadow: 0 0 0 1px var(--accent-solid), 0 0 28px rgba(196,107,240,.3); } .mp .reel .it .ico { width: 44px; height: 44px; stroke: url(#masson-grad); }
+.mp .pointer { position: absolute; left: 50%; top: -4px; margin-left: -9px; border: 9px solid transparent; border-top: 15px solid #fff; z-index: 3; }
+.mp .track { display: grid; gap: 8px; } .mp .lane { display: grid; grid-template-columns: 44px 1fr 70px; gap: 12px; align-items: center; } .mp .lane .bar { height: 30px; border-radius: 10px; background: rgba(255,255,255,.04); position: relative; overflow: hidden; } .mp .lane .bar i { position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--v) * 1%); border-radius: 10px; background: rgba(255,255,255,.12); border-right: 3px solid var(--accent-solid); }
+.mp .donut { width: 260px; height: 260px; border-radius: 50%; justify-self: center; background: conic-gradient(#ff66b3 0 var(--a), #7b86ff 0 var(--b), #c46bf0 0 var(--c), #2a2a32 0); position: relative; } .mp .donut::after { content: ""; position: absolute; inset: 44px; border-radius: 50%; background: #0b0b0e; }
+.mp .role { display: grid; gap: 6px; justify-items: center; padding: 14px 10px; border-radius: 16px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); text-align: center; font-size: 12px; font-weight: 700; } .mp .role.is-dead { opacity: .4; } .mp .role.is-me { border-color: var(--accent-solid); box-shadow: 0 0 0 1px var(--accent-solid); } .mp .role .ico { width: 24px; height: 24px; stroke: url(#masson-grad); }
+.mp .death { position: absolute; left: 0; right: 0; top: 0; bottom: 0; display: grid; place-items: center; background: radial-gradient(70% 60% at 50% 50%, rgba(120,0,20,.28), rgba(0,0,0,.82)); }
+.mp .timer-big { font-size: 72px; font-weight: 800; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+.mp .cam-frame { position: absolute; inset: 60px; border: 2px solid rgba(255,255,255,.4); border-radius: 20px; } .mp .cam-frame::before, .mp .cam-frame::after { content: ""; position: absolute; left: 50%; top: 50%; background: rgba(255,255,255,.5); } .mp .cam-frame::before { width: 28px; height: 2px; margin-left: -14px; } .mp .cam-frame::after { width: 2px; height: 28px; margin-top: -14px; }
+.mp .cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; text-align: center; font-size: 12px; font-weight: 700; } .mp .cal b { aspect-ratio: 1; display: grid; place-items: center; border-radius: 10px; background: rgba(255,255,255,.04); color: var(--text-muted); } .mp .cal b.is-on { background: var(--accent-gradient); color: #fff; }
+.mp .ctl { display: grid; gap: 14px; justify-items: center; } .mp .ctl .row { display: flex; gap: 10px; }
+.mp .ico-btn { width: 56px; height: 56px; border-radius: 18px; display: grid; place-items: center; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); } .mp .ico-btn .ico { width: 24px; height: 24px; stroke: url(#masson-grad); }
+
+/* Блок B — недостающие элементы HUD. Все поверхности — стекло, градиент только на акцентах. */
+.mp .hx { position: absolute; display: grid; gap: 10px; padding: 14px 16px; border-radius: 18px; background: var(--glass-bg-strong); border: 1px solid rgba(255,255,255,.1); box-shadow: 0 10px 30px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); animation: mp-rise .55s var(--ease) both; }
+.mp .hx-c { left: 50%; margin-left: calc(var(--w) / -2); width: var(--w); }
+.mp .hx-r { right: var(--edge-x); width: 340px; }
+.mp .hx-l { left: var(--edge-x); }
+.mp .hx__row { display: flex; align-items: center; gap: 12px; } .mp .hx__grow { flex: 1; min-width: 0; }
+.mp .hx__ico { width: 44px; height: 44px; border-radius: 14px; flex: none; display: grid; place-items: center; background: var(--accent-gradient); box-shadow: var(--accent-gloss), var(--accent-glow); }
+.mp .hx__ico .ico { stroke: #fff; width: 22px; height: 22px; filter: none; }
+.mp .hx__t { font-weight: 800; font-size: 16px; line-height: 1.2; } .mp .hx__s { color: var(--text-muted); font-size: 12px; font-weight: 600; line-height: 1.4; margin-top: 2px; }
+.mp .hx__eyebrow { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.5); font-weight: 800; }
+.mp .hx__chip { display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: 9px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.1); font-size: 12px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.mp .hx__chip--acc { background: var(--accent-gradient); border-color: transparent; box-shadow: var(--accent-gloss); }
+.mp .hx__timer { height: 3px; border-radius: 3px; background: rgba(255,255,255,.12); overflow: hidden; } .mp .hx__timer i { display: block; height: 100%; width: var(--v, 60%); border-radius: inherit; background: var(--accent-gradient); }
+.mp .hx-num { font-variant-numeric: tabular-nums; }
+
+/* повышение уровня */
+.mp .hx-level { padding: 18px 22px; gap: 12px; text-align: left; }
+.mp .hx-level__lvl { width: 64px; height: 64px; border-radius: 20px; display: grid; place-items: center; background: var(--accent-gradient); box-shadow: var(--accent-gloss), 0 0 28px rgba(255,102,179,.45); font-weight: 800; font-size: 28px; animation: mp-pop .6s var(--ease-spring) .2s both; }
+.mp .hx-level__lvl small { display: block; font-size: 9px; letter-spacing: .12em; opacity: .85; margin-bottom: -3px; text-align: center; }
+
+/* подсказки действия */
+.mp .hx-prompt { position: absolute; display: inline-flex; align-items: center; gap: 14px; height: 56px; padding: 0 20px 0 10px; border-radius: 18px; background: var(--glass-bg-strong); border: 1px solid rgba(255,255,255,.12); box-shadow: 0 10px 28px rgba(0,0,0,.5); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); animation: mp-rise .5s var(--ease) both; }
+.mp .hx-keycap { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; font-weight: 800; font-size: 18px; background: var(--accent-gradient); box-shadow: var(--accent-gloss), var(--accent-glow); flex: none; }
+.mp .hx-keycap--ring { position: relative; background: rgba(255,255,255,.1); box-shadow: none; }
+.mp .hx-ring { position: absolute; inset: -5px; border-radius: 16px; padding: 3px; background: conic-gradient(from 0deg, #ff66b3, #c46bf0, #7b86ff calc(var(--p) * 1%), rgba(255,255,255,.14) 0); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
+.mp .hx-prompt__t { font-weight: 800; font-size: 16px; } .mp .hx-prompt__s { font-size: 12px; color: var(--text-muted); font-weight: 600; margin-top: 1px; }
+.mp .hx-hint { display: flex; gap: 16px; font-size: 12px; font-weight: 700; color: var(--text-muted); } .mp .hx-hint b { display: inline-grid; place-items: center; min-width: 24px; height: 24px; padding: 0 6px; margin-right: 6px; border-radius: 8px; background: rgba(255,255,255,.1); color: #fff; font-size: 11px; }
+
+/* награды / чек / победитель */
+.mp .hx-check { background: var(--glass-bg-strong); } .mp .hx-check .hx__dash { border-top: 1px dashed rgba(255,255,255,.25); margin: 2px 0; }
+.mp .hx-kv { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: var(--text-muted); } .mp .hx-kv b { color: #fff; font-variant-numeric: tabular-nums; }
+.mp .hx-winner { text-align: center; justify-items: center; padding: 22px 28px; gap: 6px; }
+.mp .hx-winner__n { font-size: 30px; font-weight: 800; background: var(--accent-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 2px 10px rgba(255,102,179,.4)); }
+.mp .hx-banner { padding: 12px 18px 12px 12px; }
+
+/* война / захват */
+.mp .hx-capt { padding: 12px 18px; gap: 8px; }
+.mp .hx-capt__score { display: grid; grid-template-columns: 1fr auto 1fr; gap: 18px; align-items: center; }
+.mp .hx-team { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 15px; } .mp .hx-team--r { justify-content: flex-end; text-align: right; }
+.mp .hx-team__n { font-size: 32px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.mp .hx-tug { position: relative; height: 8px; border-radius: 99px; background: linear-gradient(90deg, #ff66b3 var(--v, 50%), #7b86ff 0); box-shadow: inset 0 0 0 1px rgba(0,0,0,.3); } .mp .hx-tug::after { content: ""; position: absolute; left: var(--v, 50%); top: -3px; width: 4px; height: 14px; margin-left: -2px; border-radius: 3px; background: #fff; box-shadow: 0 0 8px #fff; }
+.mp .hx-kill { display: grid; gap: 6px; justify-items: end; position: absolute; right: var(--edge-x); }
+.mp .hx-kill__row { display: inline-flex; align-items: center; gap: 10px; height: 34px; padding: 0 12px; border-radius: 11px; background: rgba(9,9,12,.8); border: 1px solid rgba(255,255,255,.1); font-weight: 700; font-size: 14px; animation: mp-rise-s .4s var(--ease) both; }
+.mp .hx-kill__row--me { border-color: rgba(210,115,236,.7); box-shadow: 0 0 14px rgba(196,107,240,.3); }
+.mp .hx-kill__row .ico { stroke: url(#masson-grad); width: 18px; height: 18px; } .mp .hx-kill__row i { font-style: normal; color: var(--text-muted); font-weight: 600; font-size: 12px; }
+
+/* сервис */
+.mp .hx-taxi { padding: 16px 20px; gap: 6px; text-align: right; } .mp .hx-taxi__p { font-size: 40px; font-weight: 800; font-variant-numeric: tabular-nums; background: var(--accent-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1; }
+.mp .hx-cmd { display: grid; grid-template-columns: auto 1fr; gap: 8px 10px; align-items: center; font-size: 13px; font-weight: 700; } .mp .hx-cmd b { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 8px; background: rgba(255,255,255,.1); font-size: 12px; }
+.mp .hx-restart { border-color: rgba(255,101,128,.5); } .mp .hx-restart .hx__ico { background: var(--danger-gradient); }
+.mp .hx-tbl { width: 100%; border-collapse: collapse; font-size: 11.5px; font-variant-numeric: tabular-nums; } .mp .hx-tbl td { padding: 3px 8px 3px 0; color: var(--text-muted); font-weight: 600; } .mp .hx-tbl td:nth-child(even) { color: #fff; font-weight: 700; padding-right: 18px; }
+.mp .hx-eq { display: inline-flex; gap: 2px; align-items: flex-end; height: 16px; } .mp .hx-eq i { width: 3px; border-radius: 2px; background: var(--accent-gradient); animation: hx-eq .9s ease-in-out infinite; } .mp .hx-eq i:nth-child(2) { animation-delay: -.3s; } .mp .hx-eq i:nth-child(3) { animation-delay: -.6s; } .mp .hx-eq i:nth-child(4) { animation-delay: -.15s; }
+@keyframes hx-eq { 0%,100% { height: 4px; } 50% { height: 16px; } }
+.mp .hx-av { width: 28px; height: 28px; border-radius: 9px; display: grid; place-items: center; background: rgba(255,255,255,.1); font-size: 11px; font-weight: 800; flex: none; } .mp .hx-av--on { background: var(--accent-gradient); box-shadow: var(--accent-gloss); }
+
+/* шкалы голода и воды */
+.mp .hx-need { position: absolute; display: grid; gap: 8px; width: 210px; padding: 12px 14px; }
+.mp .hx-need__row { display: grid; grid-template-columns: 22px 1fr 34px; gap: 10px; align-items: center; font-size: 12px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.mp .hx-need__row .ico { width: 18px; height: 18px; stroke: url(#masson-grad); }
+.mp .hx-need__bar { height: 6px; border-radius: 99px; background: rgba(255,255,255,.14); overflow: hidden; } .mp .hx-need__bar i { display: block; height: 100%; width: calc(var(--v) * 1%); border-radius: inherit; background: var(--accent-gradient); box-shadow: var(--accent-gloss); }
+.mp .hx-need__row.is-low .hx-need__bar i { background: var(--danger-gradient); } .mp .hx-need__row.is-low { color: var(--danger); } .mp .hx-need__row.is-low .ico { stroke: var(--danger); animation: mp-breathe 1.4s ease-in-out infinite; }
+.mp .hx-note { position: absolute; left: 50%; bottom: 36px; margin-left: -360px; width: 720px; text-align: center; font-size: 13px; color: var(--text-muted); font-weight: 600; }
+.mp .gt .hx-taxi__p, .mp .gt .hx-winner__n, .mp .gt .hx__t, .mp .gt .hx__s, .mp .gt .hx__eyebrow { text-shadow: none; }
+
 /* Masson RP — полировка: темнее, скруглённее, градиентные акценты, анимации.
    Подключается ПОСЛЕ остальных стилей. Все движения — через translate/scale/opacity,
    чтобы не конфликтовать с transform в компонентах. */
@@ -806,14 +900,14 @@
 .mp .win__h > span:first-child .ico { width: 20px; height: 20px; }
 .mp .win__t { background: linear-gradient(90deg, #fff 40%, #f2c9ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .mp .scrim { animation: mp-fadein .3s var(--ease) both; }
-.mp .scr--dim .scr__vignette { background: radial-gradient(120% 100% at 50% 40%, rgba(6,3,14,.55), rgba(3,1,9,.86)); }
+.mp .scr--dim .scr__vignette { background: radial-gradient(120% 100% at 50% 40%, rgba(2,2,4,.55), rgba(0,0,0,.86)); }
 .mp .scr__bg { animation: mp-drift 40s ease-in-out infinite alternate; }
 
 /* ── Кнопки ──────────────────────────────────────────────── */
 .mp .btn { border-radius: var(--radius-btn); border-color: rgba(255,255,255,.14);
   background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.04)); box-shadow: inset 0 1px 0 rgba(255,255,255,.08); overflow: hidden;
   transition: background var(--dur-fast) var(--ease), transform .25s var(--ease-spring), box-shadow var(--dur-fast) var(--ease), border-color var(--dur-fast), filter var(--dur-instant); }
-.mp .btn:hover, .mp .btn.is-hover { transform: translateY(-2px); border-color: rgba(255,255,255,.3); background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.06)); box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 8px 18px rgba(4,2,12,.4); }
+.mp .btn:hover, .mp .btn.is-hover { transform: translateY(-2px); border-color: rgba(255,255,255,.3); background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.06)); box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 8px 18px rgba(0,0,0,.4); }
 .mp .btn:active { transform: translateY(0) scale(.96); }
 .mp .btn::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0;
   background: linear-gradient(110deg, transparent 32%, rgba(255,255,255,.4) 50%, transparent 68%); translate: -130% 0; }
@@ -844,7 +938,7 @@
 
 /* ── Карточки, списки, плитки ────────────────────────────── */
 .mp .card { border-radius: 16px; } .mp .card--hover { transition: transform .3s var(--ease-spring), border-color var(--dur-fast), background var(--dur-fast), box-shadow var(--dur-fast); }
-.mp .card--hover:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(4,2,12,.45), 0 0 0 1px rgba(210,115,236,.35); }
+.mp .card--hover:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0,0,0,.45), 0 0 0 1px rgba(210,115,236,.35); }
 .mp .tile { border-radius: 14px; transition: transform .3s var(--ease-spring), background var(--dur-fast), border-color var(--dur-fast), box-shadow var(--dur-fast); }
 .mp .tile:hover { transform: translateY(-3px) scale(1.03); }
 .mp .tile.is-active { animation: mp-pop .35s var(--ease-spring) both; }
@@ -852,7 +946,7 @@
 .mp .li:hover { translate: 3px 0; }
 .mp .li.is-active { background: linear-gradient(90deg, rgba(255,102,179,.24), rgba(123,134,255,.08)); box-shadow: inset 3px 0 0 var(--accent-solid), inset 0 0 0 1px rgba(210,115,236,.2); }
 .mp .pcard { border-radius: 18px; transition: transform .3s var(--ease-spring), border-color var(--dur-fast), background var(--dur-fast), box-shadow var(--dur-fast); }
-.mp .pcard:hover { transform: translateY(-4px); border-color: rgba(210,115,236,.5); box-shadow: 0 16px 34px rgba(4,2,12,.5), 0 0 24px rgba(196,107,240,.18); }
+.mp .pcard:hover { transform: translateY(-4px); border-color: rgba(210,115,236,.5); box-shadow: 0 16px 34px rgba(0,0,0,.5), 0 0 24px rgba(196,107,240,.18); }
 .mp .pcard.is-active { box-shadow: 0 0 0 1px var(--accent-solid), 0 0 28px rgba(196,107,240,.28); }
 .mp .pcard__art { border-radius: 12px; position: relative; overflow: hidden; }
 .mp .pcard__art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 35%, rgba(255,255,255,.16) 50%, transparent 65%); translate: -130% 0; }
@@ -913,6 +1007,33 @@
 .mp .gt .win__t { text-shadow: none; filter: none; }
 .mp .win__t { color: transparent; }
 .mp .gt .kpi__v, .mp .gt .win__t { text-shadow: none; }
+
+/* ═══ v3 · сдержанный градиент ═══════════════════════════════════
+   Градиент — только на главном: основная кнопка, выбранный пункт, прогресс,
+   ключевая иконка-штрих, один фокусный элемент на экране. Остальное — графит. */
+.mp .panel { background: var(--panel); box-shadow: var(--shadow-panel), inset 0 1px 0 rgba(255,255,255,.06); border-color: rgba(255,255,255,.09); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); }
+.mp .win__h { background: none; }
+.mp .win__h > span:first-child { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.1); box-shadow: none; }
+.mp .win__t { background: none; color: #fff; -webkit-text-fill-color: #fff; }
+.mp .kpi:not([style]) .kpi__v { background: none; color: #fff; -webkit-text-fill-color: #fff; }
+.mp .bdg--accent { animation: none; background-size: 100% 100%; }
+.mp .btn--primary, .mp .btn--primary.is-disabled { animation: none; box-shadow: var(--accent-gloss), 0 4px 16px rgba(255,102,179,.22); }
+.mp .btn--primary { animation: mp-rise-s .5s var(--ease) both; animation-delay: calc(var(--i,0)*45ms + 80ms); }
+.mp .li.is-active { background: rgba(255,255,255,.07); box-shadow: inset 3px 0 0 var(--accent-solid); }
+.mp .pcard__art { background: rgba(255,255,255,.04); }
+.mp .tier.is-now { animation: none; background: rgba(255,255,255,.06); box-shadow: 0 0 0 1px var(--accent-solid); }
+.mp .tier.is-done { border-color: rgba(255,255,255,.2); }
+.mp .spin-wheel { animation: none; box-shadow: 0 0 28px rgba(196,107,240,.25); }
+.mp .scr--dim .scr__vignette { background: radial-gradient(120% 100% at 50% 40%, rgba(0,0,0,.55), rgba(0,0,0,.88)); }
+.mp .card.is-selected, .mp .pcard.is-active { background: rgba(255,255,255,.05); }
+.mp .hx__ico { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); box-shadow: none; }
+.mp .hx__ico .ico { stroke: url(#masson-grad); }
+.mp .hx__chip--acc { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.14); box-shadow: none; }
+.mp .hx-winner__n, .mp .hx-taxi__p { background: none; color: #fff; -webkit-text-fill-color: #fff; filter: none; }
+.mp .hx-level__lvl { box-shadow: var(--accent-gloss), 0 0 20px rgba(255,102,179,.3); }
+.mp .nt__name--grad { background: none; color: #fff; -webkit-text-fill-color: #fff; }
+.mp .stage.has-scene.scene--street, .mp .stage.has-scene.scene--road { }
+.mp .stage.has-scene:has(.scr--dim) { background: linear-gradient(180deg, #17171b 0%, #0a0a0c 45%, #050506 100%); }
 
 /* из auth.html дизайна */
 .mp .auth__brand { position: absolute; left: 48px; top: 36px; display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 18px; }
@@ -976,6 +1097,9 @@
   .mp .rule { display: flex; gap: 8px; align-items: center; font-size: 12px; color: var(--text-muted); font-weight: var(--fw-semibold); }
   .mp .rule .ico { width: 14px; height: 14px; }
   .mp .rule.is-ok { color: var(--success); } .mp .rule.is-bad { color: var(--danger); }
+
+/* из popups.html дизайна */
+
 
 /* Masson RP: поправки для игры (в макетах экраны рисуются поверх своего фона, в игре — поверх 3D-сцены) */
 .mp .scr--scene { background: transparent; }

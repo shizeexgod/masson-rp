@@ -11,28 +11,10 @@
 
 
     import PetControl from './elements/petcontrol.svelte';
-    import Check from './elements/check.svelte';
-    import BattlepassNotification from './elements/battlepassnotification.svelte';
     import UseButton from './elements/usebutton.svelte';
-    import KeyClamp from './elements/keyClamp.svelte';
-    import DropItem from './elements/dropitem.svelte';
-    import TaxiCount from './elements/taxicount.svelte';
-    import ActiveCapt from './elements/activecapt.svelte';
-    import EventAnounce from './elements/eventanounce.svelte';
-    import WarInfo from './elements/warinfo.svelte'
-    import WeekPrise from './elements/weekprise.svelte'
-    import Level from './elements/level.svelte'
     import MassonHud from '@/masson/hud/MassonHud.svelte'
-    import Winner from './elements/Winner.svelte'
     import Streamer from './elements/streamer.svelte'
     import Lobby from './elements/lobby.svelte'
-    import BizWar from './elements/bizwar.svelte'
-    import Killist from './elements/killlist.svelte'
-    import Radio from './elements/radio.svelte'
-    import Gift from './elements/gift.svelte'
-    import Enter from './elements/enter.svelte'
-    import Restart from './elements/restart.svelte'
-    import QuestComplite from './elements/questcomplite.svelte'
     import AdminInfo from './elements/admininfo.svelte'
 
     import Walkietalkie from './walkietalkie/index.svelte'
@@ -156,39 +138,17 @@
     <div class="hudevo__left">
         <div class="box-column hudevo__leftcenter_absolute">
             <PetControl />
-            {#if isTaxiCounter}
-                <TaxiCount />
-            {/if}
         </div>
     </div>
     <div class="hudevo__center">
-        <BattlepassNotification {SafeSone} />
-        <Level />
-        <ActiveCapt />
-        <WarInfo />
-        <EventAnounce />
-        <Check />
-        <WeekPrise />
-        <Winner />
-        <QuestComplite />
         <div class="hudevo__center_bottom">
-            <Enter />
             <UseButton />
-            <KeyClamp />
-            <DropItem />
             <!-- <Streamer /> -->
         </div>
     </div>
     <div class="hudevo__right">
-        <div class="box-flex flex-start justify-start">
-            <Gift {SafeSone}/>
-        </div>
         <!-- <Lobby /> -->
         <AdminInfo />
-        <BizWar />
-        <Killist />
-        <Radio />
-        <Restart/>
     </div>
 </div>
 
